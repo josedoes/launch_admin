@@ -1,0 +1,9 @@
+const rocketAsset = 'assets/png/rocket.png';
+const arrowAsset = 'assets/png/ic_arrow.png';
+const rocketLaunchedAsset = 'assets/png/rocket_launched.png';
+const checkAsset = 'assets/png/ic_check.png';
+const xAsset = 'assets/png/ic_x.png';
+const saturnAsset = 'assets/png/saturn.png';
+const earthAsset = 'assets/png/earth.png';
+const starAsset = 'assets/png/star.png';
+const exitAsset= 'assets/png/ic_exit.png';
