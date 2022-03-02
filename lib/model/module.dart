@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final module = moduleFromJson(jsonString);
-
 import 'dart:convert';
 
 Module moduleFromJson(String str) => Module.fromJson(json.decode(str));
@@ -10,35 +6,59 @@ String moduleToJson(Module data) => json.encode(data.toJson());
 
 class Module {
   Module({
-    required this.title,
+    required this.version,
+    required this.courseId,
+    required this.name,
     required this.description,
-    required this.lessons,
+    required this.image,
+    required this.id,
+    required this.v,
   });
 
-  final String title;
+  final double version;
+  final String courseId;
+  final String name;
   final String description;
-  final List<String> lessons;
+  final String image;
+  final String id;
+  final int v;
 
   Module copyWith({
-    String? title,
+    double? version,
+    String? courseId,
+    String? name,
     String? description,
-    List<String>? lessons,
+    String? image,
+    String? id,
+    int? v,
   }) =>
       Module(
-        title: title ?? this.title,
+        version: version ?? this.version,
+        courseId: courseId ?? this.courseId,
+        name: name ?? this.name,
         description: description ?? this.description,
-        lessons: lessons ?? this.lessons,
+        image: image ?? this.image,
+        id: id ?? this.id,
+        v: v ?? this.v,
       );
 
   factory Module.fromJson(Map<String, dynamic> json) => Module(
-        title: json["title"],
+        version: json["version"],
+        courseId: json["courseId"],
+        name: json["name"],
         description: json["description"],
-        lessons: List<String>.from(json["lessons"].map((x) => x)),
+        image: json["image"],
+        id: json["_id"],
+        v: json["__v"],
       );
 
   Map<String, dynamic> toJson() => {
-        "title": title,
+        "version": version,
+        "courseId": courseId,
+        "name": name,
         "description": description,
-        "lessons": List<dynamic>.from(lessons.map((x) => x)),
+        "image": image,
+        "_id": id,
+        "__v": v,
       };
 }

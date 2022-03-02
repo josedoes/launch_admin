@@ -3,6 +3,7 @@ import 'package:code_learn/services/auth_service.dart';
 import 'package:code_learn/services/course_service/course_service.dart';
 import 'package:code_learn/services/discover_service/discover_service.dart';
 import 'package:code_learn/services/local_storage_service.dart';
+import 'package:code_learn/services/module_service/module_service.dart';
 import 'package:code_learn/services/navigator_service/navigator_service.dart';
 import 'package:code_learn/services/router/router.dart';
 import 'package:get_it/get_it.dart';
@@ -30,4 +31,5 @@ Future<void> setUpLocator() async {
   GetIt.instance.registerSingleton<NavigatorService>(NavigatorService());
   GetIt.instance.registerSingleton<RocketRouter>(RocketRouter());
   GetIt.instance.registerSingleton<CourseService>(CourseService());
+  GetIt.instance.registerSingleton<ModuleService>(ModuleService());
 }

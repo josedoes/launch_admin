@@ -1,5 +1,6 @@
 import 'package:code_learn/model/course.dart';
 import 'package:code_learn/services/course_service/course_service.dart';
+import 'package:code_learn/utils/extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 
@@ -10,7 +11,7 @@ class EditCourseModel extends BaseViewModel {
     courseImageUrl = TextEditingController(text: course.image);
   }
 
-  final Course course;
+  Course course;
 
   late final TextEditingController courseName;
   late final TextEditingController courseDescription;
@@ -20,7 +21,12 @@ class EditCourseModel extends BaseViewModel {
     courseService.updateACourse(course.copyWith(
       image: courseImageUrl.text,
       name: courseName.text,
-      version: course.version + 0.1,
+      version: course.version.nextVersion,
     ));
+  }
+
+  void switchButton(bool value) {
+    course = course.copyWith(published: value);
+    notifyListeners();
   }
 }

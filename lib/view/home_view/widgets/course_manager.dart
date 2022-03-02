@@ -54,7 +54,17 @@ class Version extends ViewModelWidget<HomeModel> {
             child: BaseTextField(
               controller: model.versionController,
               label: const TextBody('Search by version (0 to show all)'),
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r"[0-9.]")),
+                TextInputFormatter.withFunction((oldValue, newValue) {
+                  try {
+                    final text = newValue.text;
+                    if (text.isNotEmpty) double.parse(text);
+                    return newValue;
+                  } catch (e) {}
+                  return oldValue;
+                }),
+              ],
             ),
           ),
           const SizedBox(width: 60),
@@ -150,15 +160,19 @@ class CourseDisplay extends ViewModelWidget<HomeModel> {
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          if (model.isShowingAllCourses) ...[
-            Align(
-              alignment: Alignment.topLeft,
-              child: TextBody(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextBody(
                 'version: ${course.version}',
               ),
-            ),
-            const SizedBox(height: 12)
-          ],
+              TextBody(
+                course.published ? 'published' : 'unpublished',
+                color: course.published ? Colors.green : Colors.red,
+              ),
+            ],
+          ),
+          const Spacer(),
           Text(
             course.name,
             style: baseStyle.copyWith(

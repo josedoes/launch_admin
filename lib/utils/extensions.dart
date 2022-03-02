@@ -7,8 +7,14 @@ extension xString on String {
   }
 
   bool isValidEmail() => validateEmail(this);
+
+  double toDouble() => double.tryParse(this) ?? 0;
 }
 
 bool validateEmail(String? value) => RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
     ).hasMatch(value ?? '');
+
+extension xDouble on double {
+  double get nextVersion => (this + 0.1).toStringAsFixed(1).toDouble();
+}

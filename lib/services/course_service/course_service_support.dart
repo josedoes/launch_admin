@@ -1,7 +1,5 @@
 import 'package:code_learn/model/course.dart';
 
-extension xCourse on Course {}
-
 extension xCache on Map<double, Map<String, Course>> {
   List<Course> all() {
     final courses = <Course>[];

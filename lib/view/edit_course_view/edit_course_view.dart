@@ -6,7 +6,7 @@ import 'package:code_learn/view/widgets/common_padding.dart';
 import 'package:code_learn/view/widgets/page_title.dart';
 import 'package:code_learn/view/widgets/rocket_scaffold.dart';
 import 'package:code_learn/view_models/edit_course_model.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class EditCourseView extends StatelessWidget {
@@ -50,14 +50,11 @@ class EditCourseInfo extends ViewModelWidget<EditCourseModel> {
         ),
         const SizedBox(height: 24),
         BaseTextField(
-          controller: model.courseDescription,
-          label: const TextBody('description'),
-        ),
-        const SizedBox(height: 24),
-        BaseTextField(
           controller: model.courseImageUrl,
           label: const TextBody('image url'),
         ),
+        const SizedBox(height: 24),
+        Switch(value: model.course.published, onChanged: model.switchButton),
         const SizedBox(height: 30),
         BaseButton(
           title: 'Save',
