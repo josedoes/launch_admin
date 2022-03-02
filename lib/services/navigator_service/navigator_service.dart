@@ -73,6 +73,6 @@ class NavigatorService {
 
   void goToEditCourseLocation(Course course) {
     lowLevelLog('Navigating to EditCourseLocation');
-    routerDelegate.beamToNamed(editCoursePath, data: course);
+    routerDelegate.beamToNamed('$editCoursePath/${course.id}', data: course);
   }
 }

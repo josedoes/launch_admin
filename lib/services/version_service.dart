@@ -4,6 +4,8 @@ import 'package:code_learn/services/router/router.dart';
 
 VersionService get versionService => locate<VersionService>();
 
+double get version => versionService.lastVersion;
+
 class VersionService {
   double lastVersion = 0;
 

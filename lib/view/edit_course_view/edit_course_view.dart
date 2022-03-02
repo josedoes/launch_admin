@@ -1,8 +1,10 @@
-import 'package:code_learn/model/course.dart';
+import 'package:code_learn/view/edit_course_view/widgets/manage_modules.dart';
 import 'package:code_learn/view/widgets/AdminText/text_body.dart';
 import 'package:code_learn/view/widgets/base_button.dart';
 import 'package:code_learn/view/widgets/base_text_field.dart';
 import 'package:code_learn/view/widgets/common_padding.dart';
+import 'package:code_learn/view/widgets/error_view.dart';
+import 'package:code_learn/view/widgets/loading_view.dart';
 import 'package:code_learn/view/widgets/page_title.dart';
 import 'package:code_learn/view/widgets/rocket_scaffold.dart';
 import 'package:code_learn/view_models/edit_course_model.dart';
@@ -10,23 +12,32 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class EditCourseView extends StatelessWidget {
-  const EditCourseView({required this.course, Key? key}) : super(key: key);
+  const EditCourseView({required this.courseId, Key? key}) : super(key: key);
 
-  final Course course;
+  final String courseId;
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<EditCourseModel>.reactive(
-      viewModelBuilder: () => EditCourseModel(course: course),
+      viewModelBuilder: () => EditCourseModel(courseId: courseId)..init(),
       builder: (context, model, child) {
+        if (model.isBusy) {
+          return const LoadingView();
+        }
+
+        if (model.hasError || model.course == null) {
+          return const ErrorView();
+        }
+
         return RocketScaffold(
           body: PaddingCommonMobile(
-            child: Column(
+            child: ListView(
               children: const [
                 HeaderMobileSpace(),
                 PageTitle('Edit Course'),
                 SizedBox(height: 40),
                 EditCourseInfo(),
+                ManageModules(),
                 HeaderMobileSpace(),
               ],
             ),
@@ -42,6 +53,8 @@ class EditCourseInfo extends ViewModelWidget<EditCourseModel> {
 
   @override
   Widget build(BuildContext context, model) {
+    final course = model.course;
+    if (course == null) return Container();
     return Column(
       children: [
         BaseTextField(
@@ -54,7 +67,7 @@ class EditCourseInfo extends ViewModelWidget<EditCourseModel> {
           label: const TextBody('image url'),
         ),
         const SizedBox(height: 24),
-        Switch(value: model.course.published, onChanged: model.switchButton),
+        Switch(value: course.published, onChanged: model.switchButton),
         const SizedBox(height: 30),
         BaseButton(
           title: 'Save',

@@ -18,37 +18,47 @@ class ModuleService {
     return modules;
   }
 
-  void create({required double version, required String courseId}) async {
+  Future<void> create(
+      {required double version, required String courseId}) async {
     try {
       final result = await router.post(endpoint: '/module/$version/$courseId');
       final module = Module.fromJson(result);
-      moduleCache[module.courseId] = {module.id: module};
+      addCourseToCache(module);
     } catch (e) {
       logError(e);
     }
   }
 
-  void read({required String id}) async {
+  Future<void> read({required String id}) async {
     try {
       final result = await router.get(endpoint: '/module/$id');
       final module = Module.fromJson(result);
-      moduleCache[module.courseId] = {module.id: module};
+      addCourseToCache(module);
     } catch (e) {
       logError(e);
     }
   }
 
-  void update({required String id}) async {
+  void addCourseToCache(Module module) {
+    final modules = moduleCache[module.courseId];
+    if (modules != null) {
+      moduleCache[module.courseId]?.addAll({module.id: module});
+    } else {
+      moduleCache[module.courseId] = {module.id: module};
+    }
+  }
+
+  Future<void> update({required String id}) async {
     try {
       final result = await router.patch(endpoint: '/module/$id');
       final module = Module.fromJson(result);
-      moduleCache[module.courseId] = {module.id: module};
+      moduleCache[module.courseId]?.addAll({module.id: module});
     } catch (e) {
       logError(e);
     }
   }
 
-  void delete({required id}) async {
+  Future<void> delete({required id}) async {
     try {
       final result = await router.delete(endpoint: '/module/$id');
       final module = Module.fromJson(result);
@@ -58,7 +68,7 @@ class ModuleService {
     }
   }
 
-  void all() async {
+  Future<void> all() async {
     try {
       final result = await router.get(endpoint: '/module/');
       for (final json in result) {
@@ -70,15 +80,19 @@ class ModuleService {
     }
   }
 
-  void allByVersionAndId({
-    required int version,
+  Future<void> allByVersionAndId({
+    required double version,
     required String courseId,
   }) async {
     try {
       final result = await router.get(endpoint: '/module/$version/$courseId');
       for (final json in result) {
         final module = Module.fromJson(json);
-        moduleCache[module.courseId] = {module.id: module};
+        if (moduleCache[module.courseId] != null) {
+          moduleCache[module.courseId]?.addAll({module.id: module});
+        } else {
+          moduleCache[module.courseId] = {module.id: module};
+        }
       }
     } catch (e) {
       logError(e);
