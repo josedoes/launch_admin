@@ -1,5 +1,4 @@
 import 'package:beamer/beamer.dart';
-import 'package:code_learn/globals/service.dart';
 import 'package:code_learn/launch.dart';
 import 'package:code_learn/model/course.dart';
 import 'package:code_learn/services/auth_service.dart';

@@ -9,11 +9,8 @@ class EditLessonModel extends BaseViewModel {
   ///the id must be a moduleID
   EditLessonModel({required this.id});
 
-  final versionController = TextEditingController();
-  final courseIdController = TextEditingController();
-  final nameController = TextEditingController();
-  final descriptionController = TextEditingController();
-  final imageController = TextEditingController();
+  final titleController = TextEditingController();
+  final subTitleController = TextEditingController();
 
   String id;
 
@@ -26,6 +23,8 @@ class EditLessonModel extends BaseViewModel {
       final _lesson = lesson;
 
       if (_lesson != null) {
+        titleController.text = _lesson.page.title;
+        subTitleController.text = _lesson.page.subTitle;
         await lessonService.getAllLessonsFromModule(moduleId: _lesson.id);
       }
     }));
@@ -36,7 +35,17 @@ class EditLessonModel extends BaseViewModel {
     if (_lesson != null) {
       runBusyFuture(
         Future(
-          () async {},
+          () async {
+            lessonService.update(
+              id: id,
+              newLesson: _lesson.copyWith(
+                page: _lesson.page.copyWith(
+                  title: titleController.text,
+                  subTitle: subTitleController.text,
+                ),
+              ),
+            );
+          },
         ),
       );
     }

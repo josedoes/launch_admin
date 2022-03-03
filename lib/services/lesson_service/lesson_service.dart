@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:code_learn/launch.dart';
 
 import '../../globals/service.dart';
@@ -59,9 +61,14 @@ class LessonService {
     }
   }
 
-  Future<void> update({required String id}) async {
+  Future<void> update({required String id, required Lesson newLesson}) async {
     try {
-      final result = await router.patch(endpoint: '/lesson/$id');
+      final result = await router.patch(
+        endpoint: '/lesson/$id',
+        body: jsonEncode(
+          newLesson.toJson(),
+        ),
+      );
       final lesson = Lesson.fromJson(result);
       lessonCache[lesson.moduleId]?.addAll({lesson.id: lesson});
     } catch (e) {

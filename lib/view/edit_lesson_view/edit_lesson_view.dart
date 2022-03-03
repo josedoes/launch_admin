@@ -1,4 +1,6 @@
+import 'package:code_learn/view/widgets/AdminText/text_body.dart';
 import 'package:code_learn/view/widgets/base_button.dart';
+import 'package:code_learn/view/widgets/base_text_field.dart';
 import 'package:code_learn/view/widgets/loading_view.dart';
 import 'package:code_learn/view_models/edit_lesson_model.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +41,7 @@ class EditLessonView extends StatelessWidget {
                   HeaderMobileSpace(),
                   PageTitle('Edit Lesson'),
                   SizedBox(height: 40),
-                  // EditModuleInfo(),
+                  EditLessonInfo(),
                   SizedBox(height: 20),
                 ],
                 BaseButton(title: 'Save', onPressed: model.save),
@@ -59,6 +61,27 @@ class EditLessonView extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class EditLessonInfo extends ViewModelWidget<EditLessonModel> {
+  const EditLessonInfo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, model) {
+    return Column(
+      children: [
+        BaseTextField(
+          label: const TextBody('title'),
+          controller: model.titleController,
+        ),
+        const SizedBox(height: 24),
+        BaseTextField(
+          label: const TextBody('subTitle'),
+          controller: model.subTitleController,
+        ),
+      ],
     );
   }
 }
