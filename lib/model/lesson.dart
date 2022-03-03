@@ -13,13 +13,13 @@ class Lesson {
   });
 
   final String moduleId;
-  final int versionId;
+  final double versionId;
   final Page page;
   final String id;
 
   Lesson copyWith({
     String? moduleId,
-    int? versionId,
+    double? versionId,
     Page? page,
     String? id,
   }) =>

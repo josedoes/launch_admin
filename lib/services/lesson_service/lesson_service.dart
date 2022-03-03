@@ -9,7 +9,7 @@ LessonService get lessonService => locate<LessonService>();
 class LessonService {
   final lessonCache = <String, Map<String, Lesson>>{};
 
-  Lesson? loadCourseFromCache({required String id}) {
+  Lesson? loadLessonFromCache({required String id}) {
     for (final lessonCache in lessonCache.values) {
       if (lessonCache.containsKey(id)) {
         return lessonCache[id];
@@ -49,7 +49,7 @@ class LessonService {
     }
   }
 
-  Future<void> read(String id) async {
+  Future<void> read({required String id}) async {
     try {
       final result = await router.get(endpoint: '/lesson/$id');
       final lesson = Lesson.fromJson(result);
@@ -59,7 +59,7 @@ class LessonService {
     }
   }
 
-  Future<void> update(String id) async {
+  Future<void> update({required String id}) async {
     try {
       final result = await router.patch(endpoint: '/lesson/$id');
       final lesson = Lesson.fromJson(result);
@@ -69,7 +69,7 @@ class LessonService {
     }
   }
 
-  Future<void> delete(String id) async {
+  Future<void> delete({required String id}) async {
     try {
       final result = await router.delete(
         endpoint: '/lesson//$id',

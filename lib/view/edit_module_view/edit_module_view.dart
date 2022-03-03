@@ -4,6 +4,7 @@ import 'package:code_learn/view/widgets/AdminText/text_body.dart';
 import 'package:code_learn/view/widgets/base_button.dart';
 import 'package:code_learn/view/widgets/base_text_field.dart';
 import 'package:code_learn/view/widgets/buttons/add_button.dart';
+import 'package:code_learn/view/widgets/buttons/clickable_box.dart';
 import 'package:code_learn/view/widgets/error_view.dart';
 import 'package:code_learn/view/widgets/page_title.dart';
 import 'package:code_learn/view/widgets/rocket_scaffold.dart';
@@ -74,14 +75,9 @@ class LessonFromModuleManager extends ViewModelWidget<EditModuleModel> {
 
   @override
   Widget build(BuildContext context, model) {
-    return Container(
-      color: policeBlue,
-      constraints: const BoxConstraints(
-        minHeight: 250,
-        maxHeight: 250,
-      ),
-      padding: const EdgeInsets.all(16),
-      child: TextBoxTitle(lesson.page.title),
+    return ClickableBox(
+      onPressed: () => model.goToLesson(lesson: lesson),
+      title: lesson.page.title,
     );
   }
 }

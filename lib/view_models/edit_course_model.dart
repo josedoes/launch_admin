@@ -3,7 +3,6 @@ import 'package:code_learn/model/module.dart';
 import 'package:code_learn/services/course_service/course_service.dart';
 import 'package:code_learn/services/module_service/module_service.dart';
 import 'package:code_learn/services/navigator_service/navigator_service.dart';
-import 'package:code_learn/utils/extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 
@@ -46,7 +45,7 @@ class EditCourseModel extends BaseViewModel {
     courseService.updateACourse(course.copyWith(
       image: courseImageUrl.text,
       name: courseName.text,
-      version: course.version.nextVersion,
+      version: course.version,
     ));
   }
 

@@ -5,6 +5,7 @@ import 'package:code_learn/view/edit_module_view/edit_module_view.dart';
 import 'package:code_learn/view/home_view/home_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../../view/edit_lesson_view/edit_lesson_view.dart';
 import 'paths.dart';
 
 class AuthLocation extends BeamLocation {
@@ -79,4 +80,23 @@ class EditModuleLocation extends BeamLocation<BeamState> {
 
   @override
   List<Pattern> get pathPatterns => ['$editModulePath/:id'];
+}
+
+class EditLessonLocation extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, _state) {
+    final id = _state.pathParameters['id'];
+
+    return [
+      BeamPage(
+        title: 'Edit Lesson',
+        name: 'Edit Lesson',
+        key: const ValueKey('Edit Lesson'),
+        child: EditLessonView(id: id ?? ''),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['$editLessonPath/:id'];
 }

@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 
 import '../services/module_service/module_service.dart';
+import '../services/navigator_service/navigator_service.dart';
 
 class EditModuleModel extends BaseViewModel {
   ///the id must be a courseId
@@ -71,4 +72,7 @@ class EditModuleModel extends BaseViewModel {
       await lessonService.create(_module.version, _module.id);
     }));
   }
+
+  void goToLesson({required Lesson lesson}) =>
+      navigator.goToEditLesson(lesson.id);
 }
