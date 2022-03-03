@@ -9,8 +9,18 @@ ModuleService get moduleService => locate<ModuleService>();
 class ModuleService {
   final moduleCache = <String, Map<String, Module>>{};
 
+  Module? loadModuleFromCache({required String id}) {
+    for (final moduleCache in moduleCache.values) {
+      if (moduleCache.containsKey(id)) {
+        return moduleCache[id];
+      }
+    }
+    return null;
+  }
+
   List<Module> getModulesCacheModules({required String courseId}) {
     final modules = <Module>[];
+
     final items = moduleCache[courseId] ?? {};
     for (final module in items.values) {
       modules.add(module);

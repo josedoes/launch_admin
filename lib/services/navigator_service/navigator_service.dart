@@ -55,6 +55,7 @@ class NavigatorService {
           HomeLocation(),
           AuthLocation(),
           EditCourseLocation(),
+          EditModuleLocation(),
         ],
       ),
     );
@@ -74,5 +75,10 @@ class NavigatorService {
   void goToEditCourseLocation(Course course) {
     lowLevelLog('Navigating to EditCourseLocation');
     routerDelegate.beamToNamed('$editCoursePath/${course.id}', data: course);
+  }
+
+  void goToEditModule(String id) {
+    lowLevelLog('Navigating to EditCourseLocation');
+    routerDelegate.beamToNamed('$editModulePath/$id');
   }
 }

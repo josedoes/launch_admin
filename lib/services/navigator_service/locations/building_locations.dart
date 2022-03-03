@@ -1,7 +1,7 @@
 import 'package:beamer/beamer.dart';
-import 'package:code_learn/launch.dart';
 import 'package:code_learn/view/auth_view/auth_view.dart';
 import 'package:code_learn/view/edit_course_view/edit_course_view.dart';
+import 'package:code_learn/view/edit_module_view/edit_module_view.dart';
 import 'package:code_learn/view/home_view/home_view.dart';
 import 'package:flutter/material.dart';
 
@@ -46,8 +46,6 @@ class HomeLocation extends BeamLocation {
 class EditCourseLocation extends BeamLocation<BeamState> {
   @override
   List<BeamPage> buildPages(BuildContext context, _state) {
-    logInfo('building home location, ${state.routeInformation}');
-
     final courseId = _state.pathParameters['courseId'];
 
     return [
@@ -62,4 +60,23 @@ class EditCourseLocation extends BeamLocation<BeamState> {
 
   @override
   List<Pattern> get pathPatterns => ['$editCoursePath/:courseId'];
+}
+
+class EditModuleLocation extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, _state) {
+    final id = _state.pathParameters['id'];
+
+    return [
+      BeamPage(
+        title: 'Edit Module',
+        name: 'Edit Module',
+        key: const ValueKey('Edit Module'),
+        child: EditModuleView(id: id ?? ''),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['$editModulePath/:id'];
 }
