@@ -1,3 +1,4 @@
+import 'package:code_learn/launch.dart';
 import 'package:code_learn/model/module.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
@@ -32,5 +33,27 @@ class EditModuleModel extends BaseViewModel {
         imageController.text = _module.image;
       }
     }));
+  }
+
+  Future<void> save() async {
+    final _module = module;
+    if (_module != null) {
+      runBusyFuture(
+        Future(
+          () async {
+            moduleService.update(
+              id: id,
+              newModule: _module.copyWith(
+                version: versionController.text.toDouble(),
+                courseId: courseIdController.text,
+                name: nameController.text,
+                description: descriptionController.text,
+                image: imageController.text,
+              ),
+            );
+          },
+        ),
+      );
+    }
   }
 }

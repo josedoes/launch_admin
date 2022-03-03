@@ -1,5 +1,6 @@
 import 'package:code_learn/launch.dart';
 import 'package:code_learn/view/widgets/AdminText/text_body.dart';
+import 'package:code_learn/view/widgets/base_button.dart';
 import 'package:code_learn/view/widgets/base_text_field.dart';
 import 'package:code_learn/view/widgets/error_view.dart';
 import 'package:code_learn/view/widgets/page_title.dart';
@@ -61,6 +62,7 @@ class EditModuleInfo extends ViewModelWidget<EditModuleModel> {
         BaseTextField(
           controller: model.versionController,
           label: const TextBody('version'),
+          inputFormatters: doubleFormatter,
         ),
         const SizedBox(height: 16),
         BaseTextField(
@@ -82,7 +84,8 @@ class EditModuleInfo extends ViewModelWidget<EditModuleModel> {
           controller: model.imageController,
           label: const TextBody('image'),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 20),
+        BaseButton(title: 'Save', onPressed: model.save),
       ],
     );
   }

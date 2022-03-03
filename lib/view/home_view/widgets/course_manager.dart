@@ -7,7 +7,6 @@ import 'package:code_learn/view/widgets/rocket_switcher.dart';
 import 'package:code_learn/view/widgets/tap_click.dart';
 import 'package:code_learn/view_models/home_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
 
 class CourseManager extends ViewModelWidget<HomeModel> {
@@ -54,17 +53,7 @@ class Version extends ViewModelWidget<HomeModel> {
             child: BaseTextField(
               controller: model.versionController,
               label: const TextBody('Search by version (0 to show all)'),
-              inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp(r"[0-9.]")),
-                TextInputFormatter.withFunction((oldValue, newValue) {
-                  try {
-                    final text = newValue.text;
-                    if (text.isNotEmpty) double.parse(text);
-                    return newValue;
-                  } catch (e) {}
-                  return oldValue;
-                }),
-              ],
+              inputFormatters: doubleFormatter,
             ),
           ),
           const SizedBox(width: 60),

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:code_learn/globals/service.dart';
 import 'package:code_learn/model/module.dart';
 import 'package:code_learn/services/logger/logger.dart';
@@ -58,9 +60,10 @@ class ModuleService {
     }
   }
 
-  Future<void> update({required String id}) async {
+  Future<void> update({required String id, required Module newModule}) async {
     try {
-      final result = await router.patch(endpoint: '/module/$id');
+      final result = await router.patch(
+          endpoint: '/module/$id', body: jsonEncode(newModule.toJson()));
       final module = Module.fromJson(result);
       moduleCache[module.courseId]?.addAll({module.id: module});
     } catch (e) {
