@@ -4,10 +4,11 @@ import 'package:code_learn/view/widgets/AdminText/text_body.dart';
 import 'package:code_learn/view/widgets/base_button.dart';
 import 'package:code_learn/view/widgets/base_text_field.dart';
 import 'package:code_learn/view/widgets/rocket_switcher.dart';
-import 'package:code_learn/view/widgets/tap_click.dart';
 import 'package:code_learn/view_models/home_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
+import '../../widgets/buttons/add_button.dart';
 
 class CourseManager extends ViewModelWidget<HomeModel> {
   const CourseManager({Key? key}) : super(key: key);
@@ -112,25 +113,9 @@ class AddCourse extends ViewModelWidget<HomeModel> {
 
   @override
   Widget build(BuildContext context, model) {
-    return TapClick(
+    return AddButton(
       onPressed: model.addCourse,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          const Text(
-            'Add Course',
-            style: TextStyle(color: white, fontSize: 16),
-          ),
-          const SizedBox(width: 12),
-          IconButton(
-            onPressed: model.addCourse,
-            icon: const Icon(
-              Icons.add,
-            ),
-          ),
-          const SizedBox(width: 12),
-        ],
-      ),
+      title: 'Add Course',
     );
   }
 }

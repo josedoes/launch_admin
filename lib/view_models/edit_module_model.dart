@@ -1,5 +1,7 @@
 import 'package:code_learn/launch.dart';
+import 'package:code_learn/model/lesson.dart';
 import 'package:code_learn/model/module.dart';
+import 'package:code_learn/services/lesson_service/lesson_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:stacked/stacked.dart';
 
@@ -19,6 +21,9 @@ class EditModuleModel extends BaseViewModel {
 
   Module? module;
 
+  List<Lesson> get lessons =>
+      lessonService.getLessonsForModule(moduleId: module?.id ?? '');
+
   Future<void> init() async {
     runBusyFuture(Future(() async {
       await moduleService.read(id: id);
@@ -26,6 +31,7 @@ class EditModuleModel extends BaseViewModel {
       final _module = module;
 
       if (_module != null) {
+        await lessonService.getAllLessonsFromModule(moduleId: _module.id);
         versionController.text = _module.version.toString();
         courseIdController.text = _module.courseId;
         nameController.text = _module.name;
@@ -55,5 +61,14 @@ class EditModuleModel extends BaseViewModel {
         ),
       );
     }
+  }
+
+  void addLesson() {
+    final _module = module;
+    if (_module == null) return;
+
+    runBusyFuture(Future(() async {
+      await lessonService.create(_module.version, _module.id);
+    }));
   }
 }

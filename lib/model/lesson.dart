@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-Course courseFromJson(String str) => Course.fromJson(json.decode(str));
+Lesson courseFromJson(String str) => Lesson.fromJson(json.decode(str));
 
-String courseToJson(Course data) => json.encode(data.toJson());
+String courseToJson(Lesson data) => json.encode(data.toJson());
 
-class Course {
-  Course({
+class Lesson {
+  Lesson({
     required this.moduleId,
     required this.versionId,
     required this.page,
@@ -17,20 +17,20 @@ class Course {
   final Page page;
   final String id;
 
-  Course copyWith({
+  Lesson copyWith({
     String? moduleId,
     int? versionId,
     Page? page,
     String? id,
   }) =>
-      Course(
+      Lesson(
         moduleId: moduleId ?? this.moduleId,
         versionId: versionId ?? this.versionId,
         page: page ?? this.page,
         id: id ?? this.id,
       );
 
-  factory Course.fromJson(Map<String, dynamic> json) => Course(
+  factory Lesson.fromJson(Map<String, dynamic> json) => Lesson(
         moduleId: json["moduleId"],
         versionId: json["versionId"],
         page: Page.fromJson(json["page"]),

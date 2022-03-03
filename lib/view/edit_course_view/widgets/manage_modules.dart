@@ -1,6 +1,7 @@
 import 'package:code_learn/launch.dart';
 import 'package:code_learn/model/module.dart';
 import 'package:code_learn/view/widgets/AdminText/text_body.dart';
+import 'package:code_learn/view/widgets/buttons/add_button.dart';
 import 'package:code_learn/view/widgets/tap_click.dart';
 import 'package:code_learn/view_models/edit_course_model.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,10 @@ class ManageModules extends ViewModelWidget<EditCourseModel> {
     return Column(
       children: [
         const SizedBox(height: 20),
-        const AddModuleButton(),
+        AddButton(
+          title: 'Add Module',
+          onPressed: model.addModule,
+        ),
         const SizedBox(height: 20),
         for (final module in model.modules)
           ModuleFromCourseView(module: module),
@@ -36,11 +40,15 @@ class ModuleFromCourseView extends ViewModelWidget<EditCourseModel> {
       child: TapClick(
         onPressed: () => model.editModule(module.id),
         child: Container(
+          constraints: BoxConstraints(
+            minHeight: 250,
+            minWidth: 250,
+          ),
           color: policeBlue,
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
-              TextBody(module.name),
+              TextBoxTitle(module.name),
               const SizedBox(height: 20),
               TextBody(module.description),
             ],
@@ -48,23 +56,5 @@ class ModuleFromCourseView extends ViewModelWidget<EditCourseModel> {
         ),
       ),
     );
-  }
-}
-
-class AddModuleButton extends ViewModelWidget<EditCourseModel> {
-  const AddModuleButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, model) {
-    return TapClick(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: const [
-            TextBody('Add Course'),
-            SizedBox(width: 12),
-            Icon(Icons.add)
-          ],
-        ),
-        onPressed: model.addModule);
   }
 }
