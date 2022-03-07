@@ -48,6 +48,12 @@ class EditModuleView extends StatelessWidget {
                   SizedBox(height: 20),
                 ],
                 BaseButton(title: 'Save', onPressed: model.save),
+                const SizedBox(height: 28),
+                BaseButton(
+                  title: 'Delete',
+                  onPressed: model.delete,
+                  color: Colors.red,
+                ),
                 const SizedBox(height: 20),
                 AddButton(onPressed: model.addLesson, title: 'Add Lesson'),
                 for (final lesson in model.lessons)

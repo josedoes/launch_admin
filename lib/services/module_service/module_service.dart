@@ -71,11 +71,10 @@ class ModuleService {
     }
   }
 
-  Future<void> delete({required id}) async {
+  Future<void> delete({required String id}) async {
     try {
       final result = await router.delete(endpoint: '/module/$id');
-      final module = Module.fromJson(result);
-      moduleCache[module.courseId]?.remove(module.id);
+      moduleCache.removeWhere((key, value) => value.containsKey(id));
     } catch (e) {
       logError(e);
     }

@@ -75,4 +75,9 @@ class EditModuleModel extends BaseViewModel {
 
   void goToLesson({required Lesson lesson}) =>
       navigator.goToEditLesson(lesson.id);
+
+  void delete() async {
+    await moduleService.delete(id: module?.id ?? '');
+    navigator.pop();
+  }
 }
