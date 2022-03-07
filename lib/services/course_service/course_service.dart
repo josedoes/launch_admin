@@ -9,7 +9,7 @@ import 'course_service_support.dart';
 CourseService get courseService => locate<CourseService>();
 
 class CourseService {
-  final base = '/courses';
+  final base = '/course';
   final coursesCache = <double, Map<String, Course>>{};
 
   List<Course> fromListJsonToListOfCourse(dynamic response) {

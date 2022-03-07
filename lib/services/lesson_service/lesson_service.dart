@@ -62,12 +62,12 @@ class LessonService {
   }
 
   Future<void> update({required String id, required Lesson newLesson}) async {
+    final body = jsonEncode(newLesson.toJson());
+    logInfo('update called with body: $body');
     try {
       final result = await router.patch(
         endpoint: '/lesson/$id',
-        body: jsonEncode(
-          newLesson.toJson(),
-        ),
+        body: body,
       );
       final lesson = Lesson.fromJson(result);
       lessonCache[lesson.moduleId]?.addAll({lesson.id: lesson});
@@ -79,7 +79,7 @@ class LessonService {
   Future<void> delete({required String id}) async {
     try {
       final result = await router.delete(
-        endpoint: '/lesson//$id',
+        endpoint: '/lesson/$id',
       );
 
       final lesson = Lesson.fromJson(result);

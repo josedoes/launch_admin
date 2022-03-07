@@ -17,9 +17,9 @@ class NavigatorService {
 
   NavigatorService() {
     routerDelegate = BeamerDelegate(
-      initialPath: initialPath,
-      updateFromParent: true,
       beamBackTransitionDelegate: const ReverseTransitionDelegate(),
+      initialPath: '/',
+      updateFromParent: true,
       setBrowserTabTitle: false,
       removeDuplicateHistory: false,
       guards: [
@@ -78,12 +78,14 @@ class NavigatorService {
   }
 
   void goToEditModule(String id) {
-    lowLevelLog('Navigating to Module');
-    routerDelegate.beamToNamed('$editModulePath/$id');
+    final path = '/$editModulePath/$id';
+    lowLevelLog('Navigating to Module $path');
+    routerDelegate.beamToNamed(path);
   }
 
   void goToEditLesson(String id) {
-    lowLevelLog('Navigating to Lesson');
-    routerDelegate.beamToNamed('$editLessonPath/$id');
+    final path = '/$editLessonPath/$id';
+    lowLevelLog('Navigating to Lesson = $path');
+    routerDelegate.beamToNamed(path);
   }
 }

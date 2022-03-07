@@ -40,7 +40,7 @@ class ModuleFromCourseView extends ViewModelWidget<EditCourseModel> {
       child: TapClick(
         onPressed: () => model.editModule(module.id),
         child: Container(
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             minHeight: 250,
             minWidth: 250,
           ),

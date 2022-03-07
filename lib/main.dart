@@ -1,4 +1,3 @@
-import 'package:code_learn/globals/service.dart';
 import 'package:code_learn/launch.dart';
 import 'package:code_learn/view/app_view/app_view.dart';
 import 'package:firebase_core/firebase_core.dart';

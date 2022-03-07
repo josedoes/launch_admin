@@ -52,9 +52,8 @@ class HomeModel extends BaseViewModel {
   }
 
   void delete(Course course) async {
-    runBusyFuture(Future(() async {
-      await courseService.deleteACourse(course);
-    }), busyObject: editCourseBusyObject);
+    await courseService.deleteACourse(course);
+    notifyListeners();
   }
 
   void editCourse(Course course) => navigator.goToEditCourseLocation(course);

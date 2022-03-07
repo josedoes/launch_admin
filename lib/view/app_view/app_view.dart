@@ -23,6 +23,12 @@ class LaunchApp extends StatelessWidget {
     return MaterialApp.router(
       routeInformationParser: locate<NavigatorService>().informationParser,
       routerDelegate: locate<NavigatorService>().routerDelegate,
+      darkTheme: ThemeData(
+          iconTheme: const IconThemeData(
+        color: white,
+        size: 32,
+      )),
+      themeMode: ThemeMode.dark,
       theme: ThemeData(
           iconTheme: const IconThemeData(
         color: white,

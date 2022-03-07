@@ -6,15 +6,16 @@ class TextBody extends StatelessWidget {
 
   final String content;
   final Color? color;
+  TextStyle get style => baseStyle.copyWith(
+        color: color ?? white,
+        fontSize: 14,
+      );
 
   @override
   Widget build(BuildContext context) {
     return Text(
       content,
-      style: baseStyle.copyWith(
-        color: color ?? white,
-        fontSize: 14,
-      ),
+      style: style,
     );
   }
 }

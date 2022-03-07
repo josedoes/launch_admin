@@ -32,7 +32,7 @@ class Lesson {
 
   factory Lesson.fromJson(Map<String, dynamic> json) => Lesson(
         moduleId: json["moduleId"],
-        versionId: json["versionId"],
+        versionId: json["versionId"] ?? 0,
         page: Page.fromJson(json["page"]),
         id: json["_id"],
       );
@@ -88,7 +88,7 @@ class Page {
 }
 
 class Content {
-  Content({
+  const Content({
     required this.type,
     required this.content,
     required this.support,
@@ -99,6 +99,12 @@ class Content {
   final String content;
   final dynamic support;
   final String id;
+
+  static const paragraph = 'paragraph';
+  static const image = 'image';
+  static const code = 'code';
+
+  static const list = [paragraph, image, code];
 
   Content copyWith({
     String? type,

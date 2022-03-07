@@ -10,6 +10,9 @@ class BaseTextField extends StatelessWidget {
       this.controller,
       this.inputFormatters,
       this.label,
+      this.onChanged,
+      this.maxLines,
+      this.initialValue,
       Key? key})
       : super(key: key);
   final TextEditingController? controller;
@@ -18,17 +21,27 @@ class BaseTextField extends StatelessWidget {
   final Widget? label;
   final bool obscureText;
   final List<TextInputFormatter>? inputFormatters;
+  final ValueChanged<String>? onChanged;
+  final int? maxLines;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: controller,
+      initialValue: initialValue,
       obscureText: obscureText,
       inputFormatters: inputFormatters,
       textAlignVertical: TextAlignVertical.center,
       style: inputTextStyle.copyWith(),
+      maxLines: maxLines,
+      onChanged: onChanged,
       decoration: baseTextFieldDecoration.copyWith(
         hintText: hintText,
+        hintStyle: baseStyle.copyWith(
+          color: Colors.grey[700],
+          fontSize: 12,
+        ),
         suffixIcon: suffix,
         label: label,
       ),

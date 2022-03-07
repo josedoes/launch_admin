@@ -1,10 +1,10 @@
 import 'package:code_learn/launch.dart';
 import 'package:flutter/material.dart';
 
-const baseBorder = OutlineInputBorder(
-  borderRadius: BorderRadius.all(
-    Radius.circular(999.0),
-  ),
+const baseBorder = UnderlineInputBorder(
+  // borderRadius: BorderRadius.all(
+  //   Radius.circular(999.0),
+  // ),
   borderSide: BorderSide(color: textFieldBlue, width: 3),
 );
 
@@ -14,5 +14,5 @@ final InputDecoration baseTextFieldDecoration = InputDecoration(
   disabledBorder: baseBorder,
   focusedBorder: baseBorder,
   hintStyle: hintTextStyle,
-  contentPadding: const EdgeInsets.only(left: 24, top: 28, bottom: 28),
+  // contentPadding: const EdgeInsets.only(left: 24, top: 28, bottom: 28),
 );

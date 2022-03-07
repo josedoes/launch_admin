@@ -9,12 +9,16 @@ class LoadingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RocketScaffold(
-      body: Column(
-        children: const [
-          PageTitle('Loading'),
-          SizedBox(height: 20),
-          CircularProgressIndicator(color: white),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            PageTitle('Loading'),
+            SizedBox(height: 40),
+            CircularProgressIndicator(color: white),
+            SizedBox(height: 200),
+          ],
+        ),
       ),
     );
   }
