@@ -32,7 +32,7 @@ class EditModuleModel extends BaseViewModel {
       final _module = module;
 
       if (_module != null) {
-        await lessonService.getAllLessonsFromModule(moduleId: _module.id);
+        await lessonService.fetchLessonsFromModule(moduleId: _module.id);
         versionController.text = _module.version.toString();
         courseIdController.text = _module.courseId;
         nameController.text = _module.name;

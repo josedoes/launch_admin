@@ -92,7 +92,7 @@ class ModuleService {
     }
   }
 
-  Future<void> allByVersionAndId({
+  Future<void> fetchAllByVersionAndId({
     required double version,
     required String courseId,
   }) async {

@@ -28,7 +28,7 @@ class EditCourseModel extends BaseViewModel {
       final _course = await courseService.getCourseById(courseId);
 
       if (_course != null) {
-        await moduleService.allByVersionAndId(
+        await moduleService.fetchAllByVersionAndId(
           version: _course.version,
           courseId: courseId,
         );

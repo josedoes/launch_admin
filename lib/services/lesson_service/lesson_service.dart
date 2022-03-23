@@ -99,7 +99,7 @@ class LessonService {
   //   }
   // }
 
-  Future<void> getAllLessonsFromModule({required String moduleId}) async {
+  Future<void> fetchLessonsFromModule({required String moduleId}) async {
     try {
       final result = await router.get(endpoint: '/lesson/module/$moduleId');
       for (final json in result) {

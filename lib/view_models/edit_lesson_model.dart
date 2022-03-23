@@ -57,7 +57,7 @@ class EditLessonModel extends BaseViewModel {
 
         try {
           Future.wait([
-            lessonService.getAllLessonsFromModule(moduleId: _lesson.id),
+            lessonService.fetchLessonsFromModule(moduleId: _lesson.id),
             quizService.getAllQuizzesFromLesson(lessonId: _lesson.id),
           ]);
         } catch (e) {
