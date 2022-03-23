@@ -1,8 +1,8 @@
 import 'package:code_learn/view/home_view/widgets/course_manager.dart';
 import 'package:code_learn/view/home_view/widgets/logout_button.dart';
+import 'package:code_learn/view/widgets/AdminText/text_body.dart';
 import 'package:code_learn/view/widgets/app/page_wrapper.dart';
 import 'package:code_learn/view/widgets/common_padding.dart';
-import 'package:code_learn/view/widgets/page_title.dart';
 import 'package:code_learn/view/widgets/rocket_scaffold.dart';
 import 'package:code_learn/view_models/home_model.dart';
 import 'package:flutter/material.dart';

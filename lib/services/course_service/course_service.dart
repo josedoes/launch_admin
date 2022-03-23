@@ -29,7 +29,7 @@ class CourseService {
       coursesCache.clear();
       addCoursesToCache(courses);
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -40,7 +40,7 @@ class CourseService {
       final courses = fromListJsonToListOfCourse(response);
       addCoursesToCache(courses);
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -52,7 +52,7 @@ class CourseService {
         addCourseToCache(course);
       }
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -61,7 +61,7 @@ class CourseService {
       final course = await router.get(endpoint: '$base/$id');
       return Course.fromJson(course);
     } catch (e) {
-      logError(e);
+      logger.e(e);
       return null;
     }
   }
@@ -77,7 +77,7 @@ class CourseService {
         updateACourseCache(course);
       }
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -86,7 +86,7 @@ class CourseService {
       await router.delete(endpoint: '$base/${course.id}');
       deleteCourseCache(course);
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 

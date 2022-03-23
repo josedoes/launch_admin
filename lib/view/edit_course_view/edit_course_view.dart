@@ -5,7 +5,6 @@ import 'package:code_learn/view/widgets/base_text_field.dart';
 import 'package:code_learn/view/widgets/common_padding.dart';
 import 'package:code_learn/view/widgets/error_view.dart';
 import 'package:code_learn/view/widgets/loading_view.dart';
-import 'package:code_learn/view/widgets/page_title.dart';
 import 'package:code_learn/view/widgets/rocket_scaffold.dart';
 import 'package:code_learn/view_models/edit_course_model.dart';
 import 'package:flutter/material.dart';

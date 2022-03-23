@@ -18,7 +18,7 @@ class VersionService {
         }
       }
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -31,7 +31,7 @@ class VersionService {
         }
       }
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 }

@@ -1,5 +1,5 @@
 import 'package:code_learn/launch.dart';
-import 'package:code_learn/model/quiz_error.dart';
+import 'package:code_learn/model/quiz.dart';
 import 'package:code_learn/ui/text_styles.dart';
 import 'package:code_learn/view/widgets/base_dialogue.dart';
 import 'package:code_learn/view/widgets/code_view.dart';
@@ -36,7 +36,7 @@ class HintDialog extends StatelessWidget {
 
 class QuizHint extends StatelessWidget {
   const QuizHint({required this.hintChunks, Key? key}) : super(key: key);
-  final List<TextChunk> hintChunks;
+  final List<HintChunk> hintChunks;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,7 @@ class QuizHint extends StatelessWidget {
     return spans;
   }
 
-  WidgetSpan linkWidget(TextChunk chunk) {
+  WidgetSpan linkWidget(HintChunk chunk) {
     // final regularGreenStyle = TextStyle(decoration: TextDecoration.underline,color: primaryColor, fontStyle: 22.0);
     return WidgetSpan(
       alignment: PlaceholderAlignment.middle,
@@ -74,7 +74,7 @@ class QuizHint extends StatelessWidget {
           onPressed: () {
             //TODO add logic to launch external URL or internal navigation
           },
-          child: Text(chunk.content,
+          child: Text(chunk.content??'',
               style: regularGreenStyle.copyWith(
                 decoration: TextDecoration.underline,
               )),
@@ -83,14 +83,14 @@ class QuizHint extends StatelessWidget {
     );
   }
 
-  InlineSpan normalText(TextChunk chunk) {
+  InlineSpan normalText(HintChunk chunk) {
     return TextSpan(
       text: chunk.content,
       style: errorExplainStyle,
     );
   }
 }
-
+//
 // final quizError = QuizError(
 //     answer: Answer(content: r"void main()=> print('hello');", type: 'code'),
 //     explanation: 'Your code is wrong mate',

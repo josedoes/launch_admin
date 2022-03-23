@@ -6,7 +6,6 @@ import 'package:code_learn/view/widgets/base_text_field.dart';
 import 'package:code_learn/view/widgets/buttons/add_button.dart';
 import 'package:code_learn/view/widgets/buttons/clickable_box.dart';
 import 'package:code_learn/view/widgets/error_view.dart';
-import 'package:code_learn/view/widgets/page_title.dart';
 import 'package:code_learn/view/widgets/rocket_scaffold.dart';
 import 'package:code_learn/view_models/edit_module_model.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +30,7 @@ class EditModuleView extends StatelessWidget {
 
         if (model.hasError || model.module == null) {
           if (model.module == null) {
-            logError('module is null! init() has failed! what a shame!!!');
+            logger.e('module is null! init() has failed! what a shame!!!');
           }
           return const ErrorView();
         }

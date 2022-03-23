@@ -6,6 +6,7 @@ import 'package:code_learn/services/lesson_service/lesson_service.dart';
 import 'package:code_learn/services/local_storage_service.dart';
 import 'package:code_learn/services/module_service/module_service.dart';
 import 'package:code_learn/services/navigator_service/navigator_service.dart';
+import 'package:code_learn/services/quiz_service/quiz_service.dart';
 import 'package:code_learn/services/router/router.dart';
 import 'package:code_learn/services/version_service.dart';
 import 'package:get_it/get_it.dart';
@@ -36,6 +37,7 @@ Future<void> setUpLocator() async {
   register<ModuleService>(ModuleService());
   register<VersionService>(VersionService());
   register<LessonService>(LessonService());
+  register<QuizService>(QuizService());
 }
 
 void register<T extends Object>(T value) {

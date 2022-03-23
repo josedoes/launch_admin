@@ -38,7 +38,7 @@ class AuthService {
       }
       return result.user != null ? null : 'Unexpected error';
     } on FirebaseAuthException catch (e) {
-      logError(e.toString());
+      logger.e(e.toString());
       return e.message;
     }
   }
@@ -57,7 +57,7 @@ class AuthService {
 
       return result.user?.uid;
     } on FirebaseAuthException catch (e) {
-      logError(e.toString());
+      logger.e(e.toString());
       return '';
     }
   }
@@ -83,7 +83,7 @@ class AuthService {
       logInfo('getting token = $token');
       return token;
     } catch (e) {
-      logError(e.toString());
+      logger.e(e.toString());
       return null;
     }
   }
@@ -99,7 +99,7 @@ class AuthService {
       final result = await router.get(endpoint: '/admin/$uid');
       _persistIsAdmin(result['admin'] ?? false);
     } catch (e) {
-      logError(e.toString());
+      logger.e(e.toString());
     }
   }
 
@@ -114,7 +114,7 @@ class AuthService {
       await auth.signOut();
       isAdmin = null;
     } catch (e) {
-      logError(e.toString());
+      logger.e(e.toString());
     }
   }
 }

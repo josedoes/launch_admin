@@ -4,6 +4,7 @@ import 'package:code_learn/view/widgets/AdminText/text_body.dart';
 import 'package:code_learn/view/widgets/base_button.dart';
 import 'package:code_learn/view/widgets/base_text_field.dart';
 import 'package:code_learn/view/widgets/buttons/add_button.dart';
+import 'package:code_learn/view/widgets/buttons/clickable_box.dart';
 import 'package:code_learn/view/widgets/loading_view.dart';
 import 'package:code_learn/view_models/edit_lesson_model.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,6 @@ import 'package:stacked/stacked.dart';
 
 import '../widgets/common_padding.dart';
 import '../widgets/error_view.dart';
-import '../widgets/page_title.dart';
 import '../widgets/rocket_scaffold.dart';
 
 class EditLessonView extends StatelessWidget {
@@ -30,7 +30,7 @@ class EditLessonView extends StatelessWidget {
 
         if (model.hasError || model.lesson == null) {
           if (model.lesson == null) {
-            logError('module is null! init() has failed! what a shame!!!');
+            logger.e('module is null! init() has failed! what a shame!!!');
           }
           return const ErrorView();
         }
@@ -42,6 +42,8 @@ class EditLessonView extends StatelessWidget {
                 ...const [
                   HeaderMobileSpace(),
                   PageTitle('Edit Lesson'),
+                  SizedBox(height: 40),
+                  MangeQuizOnLesson(),
                   SizedBox(height: 40),
                   EditLessonInfo(),
                   SizedBox(height: 20),
@@ -101,6 +103,7 @@ class _ContentViewState extends State<ContentView> {
       child: Column(
         children: [
           DropdownButtonFormField<String>(
+            dropdownColor: policeBlue,
             value: widget.content.type,
             style: const TextBody('').style,
             items: [
@@ -127,7 +130,7 @@ class _ContentViewState extends State<ContentView> {
           const SizedBox(height: 32),
           SizedBox(
             height: 50,
-            width: 999,
+            width: double.infinity,
             child: Row(
               children: [
                 Expanded(
@@ -170,6 +173,36 @@ class EditLessonInfo extends ViewModelWidget<EditLessonModel> {
           label: const TextBody('subTitle'),
           controller: model.subTitleController,
         ),
+      ],
+    );
+  }
+}
+
+class MangeQuizOnLesson extends ViewModelWidget<EditLessonModel> {
+  const MangeQuizOnLesson({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, model) {
+    return Column(
+      children: [
+        AddButton(onPressed: model.addQuiz, title: 'Add Quiz'),
+        const SizedBox(height: 20),
+        SizedBox(
+          height: 250,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              for (final quiz in model.quizes)
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: ClickableBox(
+                      title: quiz.name,
+                      onPressed: () => model.goToQuiz(id: quiz.id)),
+                )
+            ],
+          ),
+        ),
+        const SizedBox(height: 20),
       ],
     );
   }

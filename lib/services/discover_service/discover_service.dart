@@ -13,7 +13,7 @@ class DiscoverService {
       final modules = fromJsonToModule(response);
       return modules;
     } catch (e) {
-      logError('error in loadModules $e');
+      logger.e('error in loadModules $e');
       return [];
     }
   }

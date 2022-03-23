@@ -2,6 +2,7 @@ import 'package:beamer/beamer.dart';
 import 'package:code_learn/view/auth_view/auth_view.dart';
 import 'package:code_learn/view/edit_course_view/edit_course_view.dart';
 import 'package:code_learn/view/edit_module_view/edit_module_view.dart';
+import 'package:code_learn/view/edit_quiz_view/edit_quiz_view.dart';
 import 'package:code_learn/view/home_view/home_view.dart';
 import 'package:flutter/material.dart';
 
@@ -99,4 +100,23 @@ class EditLessonLocation extends BeamLocation<BeamState> {
 
   @override
   List<Pattern> get pathPatterns => ['$editLessonPath/:id'];
+}
+
+class EditQuizLocation extends BeamLocation<BeamState> {
+  @override
+  List<BeamPage> buildPages(BuildContext context, _state) {
+    final id = _state.pathParameters['id'];
+
+    return [
+      BeamPage(
+        title: 'Edit Quiz',
+        name: 'Edit Quiz',
+        key: const ValueKey('Edit Quiz'),
+        child: EditQuizView(id: id ?? ''),
+      ),
+    ];
+  }
+
+  @override
+  List<Pattern> get pathPatterns => ['$editQuizPath/:id'];
 }

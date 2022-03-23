@@ -47,7 +47,7 @@ class LessonService {
       final lesson = Lesson.fromJson(result);
       addLessonToCache(lesson);
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -57,7 +57,7 @@ class LessonService {
       final lesson = Lesson.fromJson(result);
       addLessonToCache(lesson);
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -72,7 +72,7 @@ class LessonService {
       final lesson = Lesson.fromJson(result);
       lessonCache[lesson.moduleId]?.addAll({lesson.id: lesson});
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -85,7 +85,7 @@ class LessonService {
       final lesson = Lesson.fromJson(result);
       lessonCache[lesson.moduleId]?.remove(lesson.id);
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -95,7 +95,7 @@ class LessonService {
   //       endpoint: '/lesson/',
   //     );
   //   } catch (e) {
-  //     logError(e);
+  //     logger.e(e);
   //   }
   // }
 
@@ -111,7 +111,7 @@ class LessonService {
         }
       }
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 }

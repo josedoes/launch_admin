@@ -56,6 +56,7 @@ class NavigatorService {
           EditCourseLocation(),
           EditModuleLocation(),
           EditLessonLocation(),
+          EditQuizLocation(),
         ],
       ),
     );
@@ -85,6 +86,12 @@ class NavigatorService {
 
   void goToEditLesson(String id) {
     final path = '/$editLessonPath/$id';
+    lowLevelLog('Navigating to Lesson = $path');
+    routerDelegate.beamToNamed(path);
+  }
+
+  void goToEditQuiz(String id) {
+    final path = '/$editQuizPath/$id';
     lowLevelLog('Navigating to Lesson = $path');
     routerDelegate.beamToNamed(path);
   }

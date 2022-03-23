@@ -1,4 +1,4 @@
-import 'package:code_learn/view/widgets/page_title.dart';
+import 'package:code_learn/view/widgets/AdminText/text_body.dart';
 import 'package:code_learn/view/widgets/rocket_scaffold.dart';
 import 'package:flutter/material.dart';
 

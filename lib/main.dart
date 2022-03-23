@@ -12,7 +12,7 @@ void main() async {
       const AppView(),
     );
   } catch (e) {
-    logError('error in main $e');
+    logger.e('error in main $e');
   }
 }
 

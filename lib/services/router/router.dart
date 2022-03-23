@@ -34,7 +34,7 @@ class RocketRouter {
       logInfo('response gotten = ${response.body}');
       return jsonDecode(response.body);
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -51,7 +51,7 @@ class RocketRouter {
       logInfo('response gotten = ${response.body}');
       return jsonDecode(response.body);
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -66,7 +66,7 @@ class RocketRouter {
       logInfo('response gotten = ${response.body}');
       return jsonDecode(response.body);
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -83,7 +83,7 @@ class RocketRouter {
       logInfo('response gotten = ${response.body}');
       return jsonDecode(response.body);
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 }

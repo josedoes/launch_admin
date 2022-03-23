@@ -37,7 +37,7 @@ class ModuleService {
       final module = Module.fromJson(result);
       addCourseToCache(module);
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -47,7 +47,7 @@ class ModuleService {
       final module = Module.fromJson(result);
       addCourseToCache(module);
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -67,7 +67,7 @@ class ModuleService {
       final module = Module.fromJson(result);
       moduleCache[module.courseId]?.addAll({module.id: module});
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -76,7 +76,7 @@ class ModuleService {
       final result = await router.delete(endpoint: '/module/$id');
       moduleCache.removeWhere((key, value) => value.containsKey(id));
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -88,7 +88,7 @@ class ModuleService {
         moduleCache[module.courseId] = {module.id: module};
       }
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 
@@ -107,7 +107,7 @@ class ModuleService {
         }
       }
     } catch (e) {
-      logError(e);
+      logger.e(e);
     }
   }
 }

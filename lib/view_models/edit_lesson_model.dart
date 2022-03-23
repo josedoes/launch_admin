@@ -1,5 +1,8 @@
+import 'package:code_learn/launch.dart';
 import 'package:code_learn/model/lesson.dart';
+import 'package:code_learn/model/quiz.dart';
 import 'package:code_learn/services/lesson_service/lesson_service.dart';
+import 'package:code_learn/services/quiz_service/quiz_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:objectid/objectid.dart';
 import 'package:stacked/stacked.dart';
@@ -19,6 +22,11 @@ class EditLessonModel extends BaseViewModel {
 
   Lesson? lesson;
   List<Content> content = [];
+
+  List<Quiz> get quizes =>
+      quizService.getQuizesForLesson(lessonId: lesson?.id ?? '');
+
+  // List<QuizError> get quizes => quizService.getQuizesForLesson(lesson.id);
 
   void saveContent({required int i, required Content content}) async {
     this.content[i] = content;
@@ -46,7 +54,15 @@ class EditLessonModel extends BaseViewModel {
       if (_lesson != null) {
         titleController.text = _lesson.page.title;
         subTitleController.text = _lesson.page.subTitle;
-        await lessonService.getAllLessonsFromModule(moduleId: _lesson.id);
+
+        try {
+          Future.wait([
+            lessonService.getAllLessonsFromModule(moduleId: _lesson.id),
+            quizService.getAllQuizzesFromLesson(lessonId: _lesson.id),
+          ]);
+        } catch (e) {
+          logger.e(e);
+        }
       }
     }));
   }
@@ -99,4 +115,13 @@ class EditLessonModel extends BaseViewModel {
   }
 
   void deleteContent(int index) => content.removeAt(index);
+
+  void addQuiz() async {
+    final _lesson = lesson;
+    if (_lesson == null) return;
+    await quizService.create(_lesson.versionId, _lesson.id);
+    notifyListeners();
+  }
+
+  void goToQuiz({required String id}) => navigator.goToEditQuiz(id);
 }

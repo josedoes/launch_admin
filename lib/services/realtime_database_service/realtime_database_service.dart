@@ -21,7 +21,7 @@ class RealtimeDatabaseService {
       final value = result.value as Map<String, dynamic>;
       return value['admin'] ?? false;
     } catch (e) {
-      logError('can sign up $e');
+      logger.e('can sign up $e');
       return false;
     }
   }

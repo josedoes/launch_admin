@@ -38,3 +38,33 @@ class TextBoxTitle extends StatelessWidget {
     );
   }
 }
+
+class PageTitle extends StatelessWidget {
+  const PageTitle(this.title, {Key? key}) : super(key: key);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: quizTitleDesktop,
+    );
+  }
+}
+
+class TextSubtitle extends StatelessWidget {
+  const TextSubtitle(this.title, {Key? key}) : super(key: key);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: quizTitleDesktop.copyWith(
+        fontSize: 22,
+      ),
+    );
+  }
+}
