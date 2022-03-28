@@ -96,7 +96,7 @@ class Quiz {
 }
 
 class Answer extends Equatable {
-  Answer({
+  const Answer({
     required this.type,
     required this.content,
     required this.id,

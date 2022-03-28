@@ -13,7 +13,7 @@ class PageCounter extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        for (int i = 0; i < model.questions.length; i++)
+        for (int i = 0; i < model.quizzes.length; i++)
           Padding(
             padding: const EdgeInsets.only(right: 6),
             child: TapClick(

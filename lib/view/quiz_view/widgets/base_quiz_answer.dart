@@ -15,7 +15,7 @@ class BaseQuizAnswer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = Provider.of<QuizViewModel>(context);
-    final quiz = model.questions[model.pageIndex];
+    final quiz = model.quizzes[model.pageIndex];
     final answer = quiz.possibleAnswers[index];
     var isSelected = model.selectedAnswer == index;
 

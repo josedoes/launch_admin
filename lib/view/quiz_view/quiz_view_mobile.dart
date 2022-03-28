@@ -25,21 +25,25 @@ class QuizViewMobile extends StatelessWidget {
             onPageChanged: model.onPageChanged,
             physics: const NeverScrollableScrollPhysics(),
             children: [
-              for (int i = 0; i < model.questions.length; i++)
+              for (int i = 0; i < model.quizzes.length; i++)
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const SizedBox(height: 24),
-                    PaddingCommonMobile(child: QuizQuestion(index: i)),
+                    PaddingCommonMobile(
+                      child: QuizQuestion(
+                        quiz: model.quizzes[i],
+                      ),
+                    ),
                     const SizedBox(height: 40),
-                    PaddingCommonMobile(child: QuizClue(index: i)),
+                    PaddingCommonMobile(child: QuizClue(quiz: model.quizzes[i],)),
                     const SizedBox(height: 32),
                     Expanded(
                       child: ContinueButtonMobile(
                         child: ListView(
                           padding: insetsHorizontal,
                           children: [
-                            QuizPossibleAnswersMobile(index: i),
+                            QuizPossibleAnswersMobile(quiz: model.quizzes[i],),
                             const SizedBox(height: 120),
                           ],
                         ),
