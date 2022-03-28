@@ -41,7 +41,7 @@ class HomeModel extends BaseViewModel {
   void loadCoursesOnVersion() {
     runBusyFuture(Future(() {
       changeVersion();
-      courseService.getAllCoursesBasedOnVersion(version: currentVersion);
+      courseService.fetchCoursesBasedOnVersion(version: currentVersion);
     }));
   }
 

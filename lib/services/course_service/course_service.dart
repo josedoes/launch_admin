@@ -33,7 +33,7 @@ class CourseService {
     }
   }
 
-  Future<void> getAllCoursesBasedOnVersion({required double version}) async {
+  Future<void> fetchCoursesBasedOnVersion({required double version}) async {
     try {
       logInfo('getting courses on version $version');
       final response = await router.get(endpoint: '$base/all/$version');

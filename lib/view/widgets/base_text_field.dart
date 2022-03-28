@@ -1,3 +1,4 @@
+import 'package:clipboard/clipboard.dart';
 import 'package:code_learn/launch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,23 +28,31 @@ class BaseTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      initialValue: initialValue,
-      obscureText: obscureText,
-      inputFormatters: inputFormatters,
-      textAlignVertical: TextAlignVertical.center,
-      style: inputTextStyle.copyWith(),
-      maxLines: maxLines,
-      onChanged: onChanged,
-      decoration: baseTextFieldDecoration.copyWith(
-        hintText: hintText,
-        hintStyle: baseStyle.copyWith(
-          color: Colors.grey[700],
-          fontSize: 12,
+    return GestureDetector(
+      onDoubleTap: () {
+        FlutterClipboard.paste().then((value) {
+          controller?.text = value;
+        });
+      },
+      child: TextFormField(
+        controller: controller,
+        initialValue: initialValue,
+        obscureText: obscureText,
+        inputFormatters: inputFormatters,
+        textAlignVertical: TextAlignVertical.center,
+        style: inputTextStyle.copyWith(),
+        maxLines: maxLines,
+        onChanged: onChanged,
+
+        decoration: baseTextFieldDecoration.copyWith(
+          hintText: hintText,
+          hintStyle: baseStyle.copyWith(
+            color: Colors.grey[700],
+            fontSize: 12,
+          ),
+          suffixIcon: suffix,
+          label: label,
         ),
-        suffixIcon: suffix,
-        label: label,
       ),
     );
   }

@@ -38,6 +38,7 @@ class EditLessonView extends StatelessWidget {
         return RocketScaffold(
           body: PaddingCommonMobile(
             child: ListView(
+              cacheExtent: 99999,
               children: [
                 ...const [
                   HeaderMobileSpace(),

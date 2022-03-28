@@ -30,19 +30,20 @@ class HomeViewContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RocketScaffold(
-        insideScrollable: false,
-        body: PaddingCommonMobile(
-          child: Column(
-            children: const [
-              HeaderMobileSpace(),
-              PageTitle('Launch Course Editor. Welcome'),
-              SizedBox(height: 60),
-              Center(child: CourseManager()),
-              Spacer(),
-              LogoutButton(),
-              FooterMobileSpace(),
-            ],
-          ),
-        ));
+      insideScrollable: false,
+      body: PaddingCommonMobile(
+        child: Column(
+          children: const [
+            HeaderMobileSpace(),
+            PageTitle('Launch Course Editor. Welcome'),
+            SizedBox(height: 60),
+            Center(child: CourseManager()),
+            Spacer(),
+            LogoutButton(),
+            FooterMobileSpace(),
+          ],
+        ),
+      ),
+    );
   }
 }
