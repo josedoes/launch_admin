@@ -28,15 +28,15 @@ class EditQuizModel extends BaseViewModel {
   String id;
 
   Quiz? quiz;
-  List<Answer> answer = [];
+  List<Answer> answers = [];
 
   void saveAnswer({required int i, required Answer answer}) async {
-    this.answer[i] = answer;
+    this.answers[i] = answer;
     notifyListeners();
   }
 
   void addAnswer() {
-    answer.add(
+    answers.add(
       Answer(
         id: ObjectId().hexString,
         type: 'code',
@@ -50,7 +50,7 @@ class EditQuizModel extends BaseViewModel {
     runBusyFuture(Future(() async {
       await quizService.read(id: id);
       quiz = quizService.loadQuizFromCache(id: id);
-      answer = List<Answer>.from(quiz?.possibleAnswers ?? []);
+      answers = List<Answer>.from(quiz?.possibleAnswers ?? []);
       final _quiz = quiz;
 
       if (_quiz != null) {
@@ -91,6 +91,7 @@ class EditQuizModel extends BaseViewModel {
                 linkToSolution: linkToSolutionController.text,
                 instruction: instructionController.text,
                 version: versionController.text.toDouble(),
+                possibleAnswers: answers,
                 correctAnswerIndex: correctAnswerIndexController.text.toInt(),
               ),
             );
@@ -101,7 +102,7 @@ class EditQuizModel extends BaseViewModel {
   }
 
   void deleteAnswer(int index) {
-    answer.removeAt(index);
+    answers.removeAt(index);
     notifyListeners();
   }
 

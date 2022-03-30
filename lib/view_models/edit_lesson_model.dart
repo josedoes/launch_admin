@@ -56,7 +56,7 @@ class EditLessonModel extends BaseViewModel {
         subTitleController.text = _lesson.page.subTitle;
 
         try {
-          Future.wait([
+         await Future.wait([
             lessonService.fetchLessonsFromModule(moduleId: _lesson.id),
             quizService.getAllQuizzesFromLesson(lessonId: _lesson.id),
           ]);

@@ -206,7 +206,7 @@ class QuizPossibleAnswers extends ViewModelWidget<EditQuizModel> {
         const SizedBox(height: 20),
         Column(
           children: [
-            for (final answer in model.answer)
+            for (final answer in model.answers)
               Padding(
                 padding: const EdgeInsets.only(bottom: 32),
                 child: EditAnswer(
@@ -214,12 +214,12 @@ class QuizPossibleAnswers extends ViewModelWidget<EditQuizModel> {
                   answer: answer,
                   onDelete: (answer) {
                     model.deleteAnswer(
-                      model.answer.indexWhere((a) => a.id == answer.id),
+                      model.answers.indexWhere((a) => a.id == answer.id),
                     );
                   },
                   onSave: (answer) {
                     model.saveAnswer(
-                      i: model.answer.indexWhere((a) => a.id == answer.id),
+                      i: model.answers.indexWhere((a) => a.id == answer.id),
                       answer: answer,
                     );
                   },
