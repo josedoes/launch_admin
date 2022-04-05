@@ -5,11 +5,11 @@ import 'package:code_learn/services/auth_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-bool get localHost => kDebugMode ? true : false;
+bool get localHost => kDebugMode ? false : false;
 
 String get baseUrl => localHost
     ? 'http://localhost:80'
-    : 'http://ec2-54-210-232-252.compute-1.amazonaws.com';
+    : 'https://launch-api.com';
 
 RocketRouter get router => locate<RocketRouter>();
 

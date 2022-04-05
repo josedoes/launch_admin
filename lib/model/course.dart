@@ -39,7 +39,7 @@ class Course {
         version: json["version"],
         name: json["name"],
         image: json["image"],
-        published: json["published"],
+        published: json["published"]??true,
       );
 
   Map<String, dynamic> toJson() => {

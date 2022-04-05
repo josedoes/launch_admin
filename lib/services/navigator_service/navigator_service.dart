@@ -13,12 +13,12 @@ NavigatorService get navigator => locate<NavigatorService>();
 class NavigatorService {
   final menuBucket = PageStorageBucket();
 
-  String get initialPath => authService.isAdminSync ? homePath : authPath;
+  String get initialPath => authService.isAdminSync ? '$homePath/' : '$authPath/';
 
   NavigatorService() {
     routerDelegate = BeamerDelegate(
       beamBackTransitionDelegate: const ReverseTransitionDelegate(),
-      initialPath: '/',
+      initialPath: initialPath,
       updateFromParent: true,
       setBrowserTabTitle: false,
       removeDuplicateHistory: false,

@@ -56,7 +56,9 @@ class AuthModel extends BaseViewModel {
           logInfo('signInButtonClicked');
 
           await authService.signIn(
-              email: emailController.text, password: passWordController.text);
+            email: emailController.text,
+            password: passWordController.text,
+          );
 
           if (authService.isAdminSync) {
             logInfo('isAdmin!');
