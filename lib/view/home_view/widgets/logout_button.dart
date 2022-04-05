@@ -15,7 +15,7 @@ class LogoutButton extends ViewModelWidget<HomeModel> {
       title: 'Logout',
       onPressed: () {
         authService.signOut();
-        navigator.goToHomeAfterLogin();
+        navigator.goToAuth();
       },
     );
   }

@@ -13,7 +13,7 @@ NavigatorService get navigator => locate<NavigatorService>();
 class NavigatorService {
   final menuBucket = PageStorageBucket();
 
-  String get initialPath => authService.isAdminSync ? '$homePath/' : '$authPath/';
+  String get initialPath => authService.isAdminSync ? '/$homePath' : '/$authPath';
 
   NavigatorService() {
     routerDelegate = BeamerDelegate(
@@ -22,32 +22,34 @@ class NavigatorService {
       updateFromParent: true,
       setBrowserTabTitle: false,
       removeDuplicateHistory: false,
+
       guards: [
-        // BeamGuard(
-        //   // on which path patterns (from incoming routes) to perform the check
-        //   pathPatterns: ['/$authPath'],
-        //   // perform the check on all patterns that **don't** have a match in pathPatterns
-        //   guardNonMatching: true,
-        //   // return false to redirect
-        //   check: (context, location) {
-        //     final checkReturn = authService.isAdminSync;
-        //     lowLevelLog(
-        //       'guarding against ${location.pathPatterns}'
-        //       '\ngonna return $checkReturn'
-        //       '',
-        //     );
-        //     return checkReturn;
-        //   },
-        //   // where to redirect on a false check
-        //   beamToNamed: (origin, target) {
-        //     lowLevelLog(
-        //       'Guarded against origin:${origin?.pathPatterns}\nto target ${target.pathPatterns}',
-        //     );
-        //
-        //     lowLevelLog('navigating to $authPath');
-        //     return authPath;
-        //   },
-        // )
+        BeamGuard(
+          // on which path patterns (from incoming routes) to perform the check
+          pathPatterns: ['$authPath'],
+          // perform the check on all patterns that **don't** have a match in pathPatterns
+          guardNonMatching: true,
+          // return false to redirect
+          check: (context, location) {
+            final checkReturn = authService.isAdminSync;
+            lowLevelLog(
+              'guarding against ${location.pathPatterns}'
+              '\ngonna return $checkReturn'
+              '',
+            );
+            return checkReturn;
+          },
+          // where to redirect on a false check
+          beamToNamed: (origin, target) {
+            lowLevelLog(
+              'Guarded against origin:${origin?.pathPatterns}\nto target ${target.pathPatterns}',
+            );
+
+            lowLevelLog('navigating to $authPath');
+
+            return '/$authPath';
+          },
+        )
       ],
       locationBuilder: BeamerLocationBuilder(
         beamLocations: [
@@ -70,7 +72,7 @@ class NavigatorService {
 
   void goToHomeAfterLogin() {
     lowLevelLog('Navigating home');
-    routerDelegate.beamToReplacementNamed(homePath);
+    routerDelegate.beamToReplacementNamed('/$homePath');
   }
 
   void goToEditCourseLocation(Course course) {
@@ -85,14 +87,21 @@ class NavigatorService {
   }
 
   void goToEditLesson(String id) {
-    final path = '/$editLessonPath/$id';
+    final path = '$editLessonPath/$id';
     lowLevelLog('Navigating to Lesson = $path');
     routerDelegate.beamToNamed(path);
   }
 
   void goToEditQuiz(String id) {
-    final path = '/$editQuizPath/$id';
+    final path = '$editQuizPath/$id';
     lowLevelLog('Navigating to Lesson = $path');
     routerDelegate.beamToNamed(path);
+  }
+
+  void goToAuth() {
+    final path = '/$authPath';
+    lowLevelLog('Navigating to authPath = $path');
+    routerDelegate.beamToNamed(path);
+
   }
 }

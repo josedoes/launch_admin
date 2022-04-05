@@ -62,6 +62,7 @@ class EmailPasswordInputs extends ViewModelWidget<AuthModel> {
           isMobile: true,
           child: BaseTextField(
             hintText: 'Password',
+            maxLines: 1,
             controller: model.passWordController,
             obscureText: true,
           ),

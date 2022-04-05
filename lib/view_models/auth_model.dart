@@ -13,16 +13,16 @@ class AuthModel extends BaseViewModel {
     signUpEmailController = TextEditingController();
     signUpPasswordController = TextEditingController();
 
-    if (kDebugMode) {
-      emailController = TextEditingController(text: 'jose@josedoes.com');
-      passWordController = TextEditingController(text: '12341234');
+    emailController = TextEditingController();
+    passWordController = TextEditingController();
 
-      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-        signInButtonClicked();
-      });
-    } else {
-      emailController = TextEditingController();
-      passWordController = TextEditingController();
+    if (kDebugMode) {
+      emailController.text = 'jose@josedoes.com';
+      passWordController.text = '12341234';
+      //
+      // WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      //   signInButtonClicked();
+      // });
     }
   }
 
