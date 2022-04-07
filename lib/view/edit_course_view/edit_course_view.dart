@@ -62,6 +62,21 @@ class EditCourseInfo extends ViewModelWidget<EditCourseModel> {
         ),
         const SizedBox(height: 24),
         BaseTextField(
+          controller: model.shortDescription,
+          label: const TextBody('shortDescription'),
+        ),
+        const SizedBox(height: 24),
+        BaseTextField(
+          controller: model.midDescription,
+          label: const TextBody('midDescription'),
+        ),
+        const SizedBox(height: 24),
+        BaseTextField(
+          controller: model.longDescription,
+          label: const TextBody('longDescription'),
+        ),
+        const SizedBox(height: 24),
+        BaseTextField(
           controller: model.courseImageUrl,
           label: const TextBody('image url'),
         ),
