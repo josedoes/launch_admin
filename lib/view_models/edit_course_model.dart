@@ -44,6 +44,9 @@ class EditCourseModel extends BaseViewModel {
         course = _course;
         courseName.text = _course.name;
         courseImageUrl.text = _course.image;
+        shortDescription.text = _course.shortDescription;
+        midDescription.text = _course.midDescription;
+        longDescription.text = _course.longDescription;
       }
     }));
   }
