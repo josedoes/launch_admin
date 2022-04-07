@@ -77,7 +77,7 @@ class NavigatorService {
 
   void goToEditCourseLocation(Course course) {
     lowLevelLog('Navigating to Course');
-    routerDelegate.beamToNamed('$editCoursePath/${course.id}', data: course);
+    routerDelegate.beamToNamed('/$editCoursePath/${course.id}', data: course);
   }
 
   void goToEditModule(String id) {
@@ -87,13 +87,13 @@ class NavigatorService {
   }
 
   void goToEditLesson(String id) {
-    final path = '$editLessonPath/$id';
+    final path = '/$editLessonPath/$id';
     lowLevelLog('Navigating to Lesson = $path');
     routerDelegate.beamToNamed(path);
   }
 
   void goToEditQuiz(String id) {
-    final path = '$editQuizPath/$id';
+    final path = '/$editQuizPath/$id';
     lowLevelLog('Navigating to Lesson = $path');
     routerDelegate.beamToNamed(path);
   }
