@@ -11,7 +11,14 @@ class Course {
     required this.name,
     required this.image,
     required this.published,
+    required this.shortDescription,
+    required this.midDescription,
+    required this.longDescription,
   });
+
+  final String shortDescription;
+  final String midDescription;
+  final String longDescription;
 
   final String id;
   final double version;
@@ -24,6 +31,9 @@ class Course {
     double? version,
     String? name,
     String? image,
+    String? shortDescription,
+    String? midDescription,
+    String? longDescription,
     bool? published,
   }) =>
       Course(
@@ -32,6 +42,9 @@ class Course {
         name: name ?? this.name,
         image: image ?? this.image,
         published: published ?? this.published,
+        shortDescription: shortDescription ?? this.shortDescription,
+        midDescription: midDescription ?? this.midDescription,
+        longDescription: longDescription ?? this.longDescription,
       );
 
   factory Course.fromJson(json) => Course(
@@ -39,7 +52,10 @@ class Course {
         version: json["version"],
         name: json["name"],
         image: json["image"],
-        published: json["published"]??true,
+        published: json["published"] ?? true,
+        shortDescription: json['shortDescription'] ?? '',
+        midDescription: json['midDescription'] ?? '',
+        longDescription: json['longDescription'] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -48,5 +64,8 @@ class Course {
         "name": name,
         "image": image,
         "published": published,
+        'shortDescription': shortDescription,
+        'midDescription': midDescription,
+        'longDescription': longDescription,
       };
 }
