@@ -174,6 +174,17 @@ class EditLessonInfo extends ViewModelWidget<EditLessonModel> {
           label: const TextBody('subTitle'),
           controller: model.subTitleController,
         ),
+        const SizedBox(height: 24),
+        BaseTextField(
+          label: const TextBody('sortWeight'),
+          controller: model.sortWeight,
+          inputFormatters: doubleFormatter,
+        ),
+        const SizedBox(height: 24),
+        BaseTextField(
+          label: const TextBody('moduleId'),
+          controller: model.moduleId,
+        ),
       ],
     );
   }

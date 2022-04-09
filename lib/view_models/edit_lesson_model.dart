@@ -6,7 +6,6 @@ import 'package:code_learn/services/quiz_service/quiz_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:objectid/objectid.dart';
 import 'package:stacked/stacked.dart';
-
 import '../services/navigator_service/navigator_service.dart';
 
 class EditLessonModel extends BaseViewModel {
@@ -17,6 +16,8 @@ class EditLessonModel extends BaseViewModel {
 
   final titleController = TextEditingController();
   final subTitleController = TextEditingController();
+  final sortWeight = TextEditingController();
+  final moduleId = TextEditingController();
 
   String id;
 
@@ -54,6 +55,8 @@ class EditLessonModel extends BaseViewModel {
       if (_lesson != null) {
         titleController.text = _lesson.page.title;
         subTitleController.text = _lesson.page.subTitle;
+        sortWeight.text = _lesson.sortWeight.toString();
+        moduleId.text = _lesson.moduleId;
 
         try {
          await Future.wait([
@@ -77,6 +80,8 @@ class EditLessonModel extends BaseViewModel {
             lessonService.update(
               id: id,
               newLesson: _lesson.copyWith(
+                moduleId: moduleId.text,
+                sortWeight: sortWeight.text.toDouble(),
                 page: _lesson.page.copyWith(
                   title: titleController.text,
                   subTitle: subTitleController.text,

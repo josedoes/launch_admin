@@ -10,39 +10,55 @@ class Lesson {
     required this.versionId,
     required this.page,
     required this.id,
+    this.isBeginner = true,
+    this.sortWeight = 0,
   });
 
   final String moduleId;
   final double versionId;
   final Page page;
+  final double sortWeight;
   final String id;
+  final bool isBeginner;
 
   Lesson copyWith({
     String? moduleId,
     double? versionId,
     Page? page,
     String? id,
+    bool? isBeginner,
+    double? sortWeight,
   }) =>
       Lesson(
-        moduleId: moduleId ?? this.moduleId,
-        versionId: versionId ?? this.versionId,
-        page: page ?? this.page,
-        id: id ?? this.id,
-      );
+          moduleId: moduleId ?? this.moduleId,
+          versionId: versionId ?? this.versionId,
+          page: page ?? this.page,
+          id: id ?? this.id,
+          sortWeight: sortWeight ?? this.sortWeight,
+          isBeginner: isBeginner ?? this.isBeginner);
 
   factory Lesson.fromJson(Map<String, dynamic> json) => Lesson(
         moduleId: json["moduleId"],
         versionId: json["versionId"] ?? 0,
         page: Page.fromJson(json["page"]),
         id: json["_id"],
+        sortWeight: json['sortWeight'] ?? 0,
+        isBeginner: json['isBeginner'] ?? true,
       );
 
   Map<String, dynamic> toJson() => {
         "moduleId": moduleId,
         "versionId": versionId,
         "page": page.toJson(),
+        'sortWeight': sortWeight,
         "_id": id,
+        'isBeginner': isBeginner,
       };
+
+  @override
+  String toString() {
+    return 'Lesson{moduleId: $moduleId, versionId: $versionId, page: $page, sortWeight: $sortWeight, id: $id, isBeginner: $isBeginner}';
+  }
 }
 
 class Page {
