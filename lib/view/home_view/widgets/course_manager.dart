@@ -73,7 +73,7 @@ class Version extends ViewModelWidget<HomeModel> {
 
   Widget _uploadIcon(HomeModel model){
     Widget child = Container();
-    if (!model.isUpToDate) {
+    if (!model.isPublished) {
       child = IconButton(
         onPressed: model.onPublishVersion,
         icon: const Icon(

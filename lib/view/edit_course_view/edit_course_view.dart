@@ -77,6 +77,11 @@ class EditCourseInfo extends ViewModelWidget<EditCourseModel> {
         ),
         const SizedBox(height: 24),
         BaseTextField(
+          controller: model.sortWeight,
+          label: const TextBody('sort Weight'),
+        ),
+        const SizedBox(height: 24),
+        BaseTextField(
           controller: model.courseImageUrl,
           label: const TextBody('image url'),
         ),

@@ -14,12 +14,14 @@ class Course {
     required this.shortDescription,
     required this.midDescription,
     required this.longDescription,
+    required this.sortWeight,
   });
 
   final String shortDescription;
   final String midDescription;
   final String longDescription;
 
+  final int sortWeight;
   final String id;
   final double version;
   final String name;
@@ -35,9 +37,11 @@ class Course {
     String? midDescription,
     String? longDescription,
     bool? published,
+    int? sortWeight,
   }) =>
       Course(
         id: id ?? this.id,
+        sortWeight: sortWeight ?? this.sortWeight,
         version: version ?? this.version,
         name: name ?? this.name,
         image: image ?? this.image,
@@ -56,6 +60,7 @@ class Course {
         shortDescription: json['shortDescription'] ?? '',
         midDescription: json['midDescription'] ?? '',
         longDescription: json['longDescription'] ?? '',
+        sortWeight: json['sortWeight'] ?? 0,
       );
 
   Map<String, dynamic> toJson() => {
@@ -67,5 +72,6 @@ class Course {
         'shortDescription': shortDescription,
         'midDescription': midDescription,
         'longDescription': longDescription,
+        'sortWeight': sortWeight,
       };
 }

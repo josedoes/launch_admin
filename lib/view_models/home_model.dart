@@ -15,6 +15,7 @@ class HomeModel extends BaseViewModel {
       ..addListener(() {
         notifyListeners();
       });
+
   }
 
   double currentVersion = 0;
@@ -32,11 +33,14 @@ class HomeModel extends BaseViewModel {
 
   double get publishedVersion => versionService.publishedVersion;
 
+  bool get isPublished => publishedVersion == versionController.text.toDouble();
+
   void init() {
     runBusyFuture(Future(() async {
       await versionService.fetchLatestVersion();
       await courseService.getAllCourses();
       currentVersion = versionService.publishedVersion;
+      versionController.text = versionService.publishedVersion.toString();
     }));
   }
 

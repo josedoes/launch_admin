@@ -3,6 +3,7 @@ import 'package:code_learn/model/module.dart';
 import 'package:code_learn/services/course_service/course_service.dart';
 import 'package:code_learn/services/module_service/module_service.dart';
 import 'package:code_learn/services/navigator_service/navigator_service.dart';
+import 'package:code_learn/utils/extensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class EditCourseModel extends BaseViewModel {
     shortDescription = TextEditingController();
     midDescription = TextEditingController();
     longDescription = TextEditingController();
+    sortWeight = TextEditingController();
   }
 
   final String courseId;
@@ -28,6 +30,7 @@ class EditCourseModel extends BaseViewModel {
   late final TextEditingController shortDescription;
   late final TextEditingController midDescription;
   late final TextEditingController longDescription;
+  late final TextEditingController sortWeight;
 
   List<Module> get modules =>
       moduleService.getModulesCacheModules(courseId: courseId);
@@ -47,6 +50,7 @@ class EditCourseModel extends BaseViewModel {
         shortDescription.text = _course.shortDescription;
         midDescription.text = _course.midDescription;
         longDescription.text = _course.longDescription;
+        sortWeight.text = _course.sortWeight.toString();
       }
     }));
   }
@@ -61,6 +65,7 @@ class EditCourseModel extends BaseViewModel {
       shortDescription: shortDescription.text,
       midDescription: midDescription.text,
       longDescription: longDescription.text,
+      sortWeight:  sortWeight.text.toInt(),
     ));
   }
 
