@@ -43,7 +43,7 @@ class EditQuizView extends StatelessWidget {
               children: [
                 ...const [
                   HeaderMobileSpace(),
-                  PageTitle('Edit Quiz'),
+                  TextPageTitle('Edit Quiz'),
                   SizedBox(height: 40),
                   EditQuizInfo(),
                   SizedBox(height: 40),

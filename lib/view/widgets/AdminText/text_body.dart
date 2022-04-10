@@ -39,8 +39,8 @@ class TextBoxTitle extends StatelessWidget {
   }
 }
 
-class PageTitle extends StatelessWidget {
-  const PageTitle(this.title, {Key? key}) : super(key: key);
+class TextPageTitle extends StatelessWidget {
+  const TextPageTitle(this.title, {Key? key}) : super(key: key);
 
   final String title;
 

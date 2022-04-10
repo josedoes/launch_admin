@@ -1,6 +1,10 @@
 import 'package:code_learn/model/course.dart';
 import 'package:code_learn/services/course_service/course_service.dart';
+import 'package:code_learn/services/version_service.dart';
+import 'package:code_learn/utils/extensions.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 
 import '../services/navigator_service/navigator_service.dart';
@@ -26,9 +30,13 @@ class HomeModel extends BaseViewModel {
         allCourses: isShowingAllCourses,
       );
 
+  double get publishedVersion => versionService.publishedVersion;
+
   void init() {
     runBusyFuture(Future(() async {
+      await versionService.fetchLatestVersion();
       await courseService.getAllCourses();
+      currentVersion = versionService.publishedVersion;
     }));
   }
 
@@ -57,6 +65,13 @@ class HomeModel extends BaseViewModel {
   }
 
   void editCourse(Course course) => navigator.goToEditCourseLocation(course);
+
+  void onPublishVersion() async {
+    final newVersion = versionController.text;
+    Logger().d('onPublishVersion called with version $newVersion');
+    await versionService.updateVersion(newVersion);
+    notifyListeners();
+  }
 }
 
 const editCourseBusyObject = 0;

@@ -4,17 +4,17 @@ import 'package:code_learn/services/router/router.dart';
 
 VersionService get versionService => locate<VersionService>();
 
-double get version => versionService.lastVersion;
+double get version => versionService.publishedVersion;
 
 class VersionService {
-  double lastVersion = 0;
+  double publishedVersion = 0;
 
-  Future<void> updateVersion(double version) async {
+  Future<void> updateVersion(String version) async {
     try {
       final result = await router.post(endpoint: '/version/$version');
       if (result != null) {
         if (result['version'] != null) {
-          lastVersion = result['version'];
+          publishedVersion = result['version'];
         }
       }
     } catch (e) {
@@ -27,11 +27,12 @@ class VersionService {
       final result = await router.get(endpoint: '/version');
       if (result != null) {
         if (result['version'] != null) {
-          lastVersion = result['version'];
+          publishedVersion = result['version'];
         }
       }
     } catch (e) {
       logger.e(e);
     }
   }
+
 }

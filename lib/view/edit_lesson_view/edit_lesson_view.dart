@@ -42,7 +42,7 @@ class EditLessonView extends StatelessWidget {
               children: [
                 ...const [
                   HeaderMobileSpace(),
-                  PageTitle('Edit Lesson'),
+                  TextPageTitle('Edit Lesson'),
                   SizedBox(height: 40),
                   MangeQuizOnLesson(),
                   SizedBox(height: 40),

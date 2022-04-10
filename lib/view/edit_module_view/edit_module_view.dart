@@ -41,7 +41,7 @@ class EditModuleView extends StatelessWidget {
               children: [
                 ...const [
                   HeaderMobileSpace(),
-                  PageTitle('Edit Module'),
+                  TextPageTitle('Edit Module'),
                   SizedBox(height: 40),
                   EditModuleInfo(),
                   SizedBox(height: 20),

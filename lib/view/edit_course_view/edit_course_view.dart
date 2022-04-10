@@ -33,7 +33,7 @@ class EditCourseView extends StatelessWidget {
             child: ListView(
               children: const [
                 HeaderMobileSpace(),
-                PageTitle('Edit Course'),
+                TextPageTitle('Edit Course'),
                 SizedBox(height: 40),
                 EditCourseInfo(),
                 ManageModules(),

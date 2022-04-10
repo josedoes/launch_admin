@@ -9,7 +9,7 @@ class ErrorView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const RocketScaffold(
       body: Center(
-        child: PageTitle('There has been an error'),
+        child: TextPageTitle('There has been an error'),
       ),
     );
   }

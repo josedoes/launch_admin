@@ -8,9 +8,10 @@ extension xString on String {
 
   bool isValidEmail() => validateEmail(this);
 
-  double toDouble() => double.tryParse(this) ?? 0;
+  double toDouble() =>
+      num.tryParse(this)?.toDouble() ?? double.tryParse(this) ?? 0.0;
 
-  int toInt()=> int.tryParse(this)??0;
+  int toInt() => int.tryParse(this) ?? 0;
 }
 
 bool validateEmail(String? value) => RegExp(

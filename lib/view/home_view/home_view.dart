@@ -1,3 +1,4 @@
+import 'package:code_learn/ui/text_styles.dart';
 import 'package:code_learn/view/home_view/widgets/course_manager.dart';
 import 'package:code_learn/view/home_view/widgets/logout_button.dart';
 import 'package:code_learn/view/widgets/AdminText/text_body.dart';
@@ -35,13 +36,38 @@ class HomeViewContent extends StatelessWidget {
         child: Column(
           children: const [
             HeaderMobileSpace(),
-            PageTitle('Launch Course Editor. Welcome'),
+            Align(
+              alignment: Alignment.topLeft,
+              child: TextPageTitle(
+                'Launch Course Editor. Welcome',
+              ),
+            ),
+            SizedBox(height: 20),
+            PublishedVersion(),
             SizedBox(height: 60),
             Center(child: CourseManager()),
             Spacer(),
             LogoutButton(),
             FooterMobileSpace(),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class PublishedVersion extends ViewModelWidget<HomeModel> {
+  const PublishedVersion({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, model) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Text(
+        'Published version = ${model.publishedVersion}',
+        style: quizTitleDesktop.copyWith(
+          fontSize: 22,
+          color: Colors.green,
         ),
       ),
     );

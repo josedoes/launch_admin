@@ -13,7 +13,7 @@ class LoadingView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
-            PageTitle('Loading'),
+            TextPageTitle('Loading'),
             SizedBox(height: 40),
             CircularProgressIndicator(color: white),
             SizedBox(height: 200),

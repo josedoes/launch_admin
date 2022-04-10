@@ -57,17 +57,35 @@ class Version extends ViewModelWidget<HomeModel> {
               inputFormatters: doubleFormatter,
             ),
           ),
-          const SizedBox(width: 60),
+          const SizedBox(width: 40),
           SizedBox(
             width: 60,
-            child: _getIcon(model),
+            child: _uploadIcon(model),
+          ),
+          SizedBox(
+            width: 60,
+            child: _downloadIcon(model),
           )
         ],
       ),
     );
   }
 
-  Widget _getIcon(HomeModel model) {
+  Widget _uploadIcon(HomeModel model){
+    Widget child = Container();
+    if (!model.isUpToDate) {
+      child = IconButton(
+        onPressed: model.onPublishVersion,
+        icon: const Icon(
+          Icons.cloud_upload,
+          color: white,
+        ),
+      );
+    }
+    return child;
+  }
+
+  Widget _downloadIcon(HomeModel model) {
     Widget child = Container();
     if (!model.isUpToDate) {
       child = IconButton(
