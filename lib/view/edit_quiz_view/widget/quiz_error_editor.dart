@@ -16,10 +16,10 @@ class QuizErrorEditor extends ViewModelWidget<EditQuizModel> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TextSubtitle('Error Dialog'),
+        const TextSubtitle('Success Dialog!'),
         const SizedBox(height: 16),
         BaseTextField(
-          label: const TextBody('explanation'),
+          label: const TextBody('Congratulations Message!'),
           initialValue: quizError.explanation,
           onChanged: (a) => model.modelUpdateQuizErrorExplanation(a),
         ),

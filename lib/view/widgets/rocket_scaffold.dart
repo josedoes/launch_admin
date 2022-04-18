@@ -1,4 +1,5 @@
 import 'package:code_learn/ui/colors.dart';
+import 'package:code_learn/view/app_view/app_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -51,11 +52,13 @@ class RocketScaffold extends StatelessWidget {
         body: SafeArea(
           child: Align(
             alignment: Alignment.topCenter,
-            child: Container(
-              constraints: const BoxConstraints(
-                maxWidth: 1920,
+            child: FadeIn(
+              child: Container(
+                constraints: const BoxConstraints(
+                  maxWidth: 800,
+                ),
+                child: body,
               ),
-              child: body,
             ),
           ),
         ),

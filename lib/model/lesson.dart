@@ -119,8 +119,9 @@ class Content {
   static const paragraph = 'paragraph';
   static const image = 'image';
   static const code = 'code';
+  static const dartPad = 'dartPad';
 
-  static const list = [paragraph, image, code];
+  static const list = [paragraph, image, code, dartPad];
 
   Content copyWith({
     String? type,

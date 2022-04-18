@@ -20,21 +20,23 @@ class LaunchApp extends StatelessWidget {
   Widget build(
     BuildContext context,
   ) {
-    return MaterialApp.router(
-      routeInformationParser: locate<NavigatorService>().informationParser,
-      routerDelegate: locate<NavigatorService>().routerDelegate,
-      darkTheme: ThemeData(
-          iconTheme: const IconThemeData(
-        color: white,
-        size: 32,
-      )),
-      themeMode: ThemeMode.dark,
-      theme: ThemeData(
-          iconTheme: const IconThemeData(
-        color: white,
-        size: 32,
-      )),
-      title: 'Launch',
+    return Material(
+      child: MaterialApp.router(
+        routeInformationParser: locate<NavigatorService>().informationParser,
+        routerDelegate: locate<NavigatorService>().routerDelegate,
+        darkTheme: ThemeData(
+            iconTheme: const IconThemeData(
+          color: white,
+          size: 32,
+        )),
+        themeMode: ThemeMode.dark,
+        theme: ThemeData(
+            iconTheme: const IconThemeData(
+          color: white,
+          size: 32,
+        )),
+        title: 'Launch',
+      ),
     );
   }
 }
@@ -47,6 +49,28 @@ class Injector extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<AppModel>(
       create: (_) => AppModel()..init(),
+      child: child,
+    );
+  }
+}
+
+class FadeIn extends StatelessWidget {
+  const FadeIn({required this.child, Key? key}) : super(key: key);
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0.0, end: 1.0),
+      duration: fast,
+      curve: Curves.easeIn,
+      builder: (context, value, child) {
+        return Opacity(
+          opacity: value,
+          child: child,
+        );
+      },
       child: child,
     );
   }
