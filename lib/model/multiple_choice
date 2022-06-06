@@ -6,12 +6,12 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-Quiz quizFromJson(String str) => Quiz.fromJson(json.decode(str));
+MultipleChoice quizFromJson(String str) => MultipleChoice.fromJson(json.decode(str));
 
-String quizToJson(Quiz data) => json.encode(data.toJson());
+String quizToJson(MultipleChoice data) => json.encode(data.toJson());
 
-class Quiz {
-  Quiz({
+class MultipleChoice {
+  MultipleChoice({
     required this.id,
     required this.lessonId,
     required this.version,
@@ -37,7 +37,7 @@ class Quiz {
   final QuizError error;
   final int v;
 
-  Quiz copyWith({
+  MultipleChoice copyWith({
     String? id,
     String? lessonId,
     double? version,
@@ -50,7 +50,7 @@ class Quiz {
     QuizError? error,
     int? v,
   }) =>
-      Quiz(
+      MultipleChoice(
         id: id ?? this.id,
         lessonId: lessonId ?? this.lessonId,
         version: version ?? this.version,
@@ -64,7 +64,7 @@ class Quiz {
         v: v ?? this.v,
       );
 
-  factory Quiz.fromJson(Map<String, dynamic> json) => Quiz(
+  factory MultipleChoice.fromJson(Map<String, dynamic> json) => MultipleChoice(
         id: json["_id"],
         lessonId: json["lessonId"],
         version: json["version"].toDouble(),

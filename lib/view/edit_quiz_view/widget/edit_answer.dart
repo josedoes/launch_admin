@@ -3,7 +3,7 @@ import 'package:code_learn/view/edit_quiz_view/edit_quiz_view.dart';
 import 'package:code_learn/view/widgets/base_button.dart';
 import 'package:code_learn/view/widgets/base_text_field.dart';
 import 'package:flutter/material.dart';
-import '../../../model/quiz.dart';
+import '../../../model/multiple_choice';
 import '../../widgets/AdminText/text_body.dart';
 import '../../widgets/base_box.dart';
 

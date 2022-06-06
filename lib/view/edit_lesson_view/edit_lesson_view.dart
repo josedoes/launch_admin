@@ -67,6 +67,12 @@ class EditLessonView extends StatelessWidget {
                         }),
                   ),
                 BaseButton(title: 'Save', onPressed: model.save),
+                const SizedBox(height: 20),
+                BaseButton(
+                  title: 'Delete',
+                  onPressed: model.deleteLesson,
+                  color: Colors.red,
+                ),
                 const HeaderMobileSpace(),
               ],
             ),
@@ -146,7 +152,7 @@ class _ContentViewState extends State<ContentView> {
                 ),
                 const SizedBox(width: 40),
                 BaseButton(
-                    title: 'delele',
+                    title: 'delete',
                     color: Colors.red,
                     onPressed: () => widget.model.deleteContent(widget.index))
               ],

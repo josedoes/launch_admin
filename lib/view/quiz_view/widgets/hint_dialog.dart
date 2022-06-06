@@ -1,5 +1,5 @@
 import 'package:code_learn/launch.dart';
-import 'package:code_learn/model/quiz.dart';
+import 'package:code_learn/model/multiple_choice';
 import 'package:code_learn/ui/text_styles.dart';
 import 'package:code_learn/view/widgets/base_dialogue.dart';
 import 'package:code_learn/view/widgets/code_view.dart';

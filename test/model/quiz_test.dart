@@ -1,11 +1,11 @@
-import 'package:code_learn/model/quiz.dart';
+import 'package:code_learn/model/multiple_choice';
 import 'package:flutter_test/flutter_test.dart';
 
 main() {
   test('quiz can parse dart map', () {
       expect(
         true,
-        Quiz.fromJson(map).id == map['_id'],
+        MultipleChoice.fromJson(map).id == map['_id'],
         reason: 'parses id correctly',
       );
     }

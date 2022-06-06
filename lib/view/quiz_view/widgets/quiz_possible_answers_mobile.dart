@@ -1,11 +1,11 @@
-import 'package:code_learn/model/quiz.dart';
+import 'package:code_learn/model/multiple_choice';
 import 'package:code_learn/view/quiz_view/widgets/base_quiz_answer.dart';
 import 'package:flutter/material.dart';
 
 class QuizPossibleAnswersMobile extends StatelessWidget {
   const QuizPossibleAnswersMobile({required this.quiz, Key? key})
       : super(key: key);
-  final Quiz quiz;
+  final MultipleChoice quiz;
 
   @override
   Widget build(BuildContext context) {

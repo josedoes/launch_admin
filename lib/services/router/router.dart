@@ -4,8 +4,9 @@ import 'package:code_learn/launch.dart';
 import 'package:code_learn/services/auth_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:logger/logger.dart';
 
-bool get localHost => kDebugMode ? false : false;
+bool get localHost => kDebugMode ? true : false;
 
 String get baseUrl => localHost
     ? 'http://localhost:80'
@@ -51,7 +52,9 @@ class RocketRouter {
       logInfo('response gotten = ${response.body}');
       return jsonDecode(response.body);
     } catch (e) {
-      logger.e(e);
+      Logger(
+        printer: PrettyPrinter(),
+      ).e(e);
     }
   }
 

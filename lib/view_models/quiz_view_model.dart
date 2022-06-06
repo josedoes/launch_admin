@@ -1,5 +1,5 @@
 import 'package:code_learn/launch.dart';
-import 'package:code_learn/model/quiz.dart';
+import 'package:code_learn/model/multiple_choice';
 import 'package:flutter/material.dart';
 
 class QuizViewModel extends ChangeNotifier {
@@ -14,9 +14,9 @@ class QuizViewModel extends ChangeNotifier {
   bool showAnswer = false;
 
   final errors = <int>[];
-  final quizzes = <Quiz>[];
+  final quizzes = <MultipleChoice>[];
 
-  Quiz get currentQuiz => quizzes[pageIndex];
+  MultipleChoice get currentQuiz => quizzes[pageIndex];
 
   int pageIndex = 0;
 

@@ -1,5 +1,5 @@
 import 'package:code_learn/launch.dart';
-import 'package:code_learn/model/quiz.dart';
+import 'package:code_learn/model/multiple_choice';
 import 'package:code_learn/services/quiz_service/quiz_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:objectid/objectid.dart';
@@ -27,7 +27,7 @@ class EditQuizModel extends BaseViewModel {
 
   String id;
 
-  Quiz? quiz;
+  MultipleChoice? quiz;
   List<Answer> answers = [];
 
   void saveAnswer({required int i, required Answer answer}) async {
@@ -67,7 +67,7 @@ class EditQuizModel extends BaseViewModel {
     }));
   }
 
-  void initTextFields(Quiz quiz) {
+  void initTextFields(MultipleChoice quiz) {
     lessonIdController.text = quiz.lessonId;
     nameController.text = quiz.name;
     linkToSolutionController.text = quiz.linkToSolution ?? '';

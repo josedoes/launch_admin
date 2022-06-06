@@ -1,6 +1,6 @@
 import 'package:code_learn/launch.dart';
 import 'package:code_learn/model/lesson.dart';
-import 'package:code_learn/model/quiz.dart';
+import 'package:code_learn/model/multiple_choice';
 import 'package:code_learn/services/lesson_service/lesson_service.dart';
 import 'package:code_learn/services/quiz_service/quiz_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,7 +24,7 @@ class EditLessonModel extends BaseViewModel {
   Lesson? lesson;
   List<Content> content = [];
 
-  List<Quiz> get quizes =>
+  List<MultipleChoice> get quizes =>
       quizService.getQuizesForLesson(lessonId: lesson?.id ?? '');
 
   // List<QuizError> get quizes => quizService.getQuizesForLesson(lesson.id);
@@ -61,7 +61,7 @@ class EditLessonModel extends BaseViewModel {
         try {
          await Future.wait([
             lessonService.fetchLessonsFromModule(moduleId: _lesson.id),
-            quizService.getAllQuizzesFromLesson(lessonId: _lesson.id),
+            quizService.fetchAllQuizzesFromLesson(lessonId: _lesson.id),
           ]);
         } catch (e) {
           logger.e(e);
@@ -129,4 +129,9 @@ class EditLessonModel extends BaseViewModel {
   }
 
   void goToQuiz({required String id}) => navigator.goToEditQuiz(id);
+
+  void deleteLesson() async{
+    await lessonService.delete(id: id);
+    navigator.pop();
+  }
 }
