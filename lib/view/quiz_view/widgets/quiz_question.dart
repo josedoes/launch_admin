@@ -1,4 +1,4 @@
-import 'package:code_learn/model/multiple_choice';
+import 'package:code_learn/model/multiple_choice.dart';
 import 'package:code_learn/ui/ui_public.dart';
 import 'package:flutter/material.dart';
 

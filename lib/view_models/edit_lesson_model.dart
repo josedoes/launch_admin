@@ -1,8 +1,11 @@
 import 'package:code_learn/launch.dart';
+import 'package:code_learn/model/fill_in_the_blanks.dart';
 import 'package:code_learn/model/lesson.dart';
-import 'package:code_learn/model/multiple_choice';
+import 'package:code_learn/model/multiple_choice.dart';
+import 'package:code_learn/services/fill_in_the_blanks_service.dart';
 import 'package:code_learn/services/lesson_service/lesson_service.dart';
 import 'package:code_learn/services/quiz_service/quiz_service.dart';
+import 'package:code_learn/services/version_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:objectid/objectid.dart';
 import 'package:stacked/stacked.dart';
@@ -19,6 +22,8 @@ class EditLessonModel extends BaseViewModel {
   final sortWeight = TextEditingController();
   final moduleId = TextEditingController();
 
+
+
   String id;
 
   Lesson? lesson;
@@ -27,7 +32,9 @@ class EditLessonModel extends BaseViewModel {
   List<MultipleChoice> get quizes =>
       quizService.getQuizesForLesson(lessonId: lesson?.id ?? '');
 
-  // List<QuizError> get quizes => quizService.getQuizesForLesson(lesson.id);
+  List<FillInTheBlanks> get fillInTheBlanks =>
+      fillInTheBlanksService.getQuizesForLesson(lessonId: lesson?.id ?? '');
+
 
   void saveContent({required int i, required Content content}) async {
     this.content[i] = content;
@@ -62,6 +69,7 @@ class EditLessonModel extends BaseViewModel {
          await Future.wait([
             lessonService.fetchLessonsFromModule(moduleId: _lesson.id),
             quizService.fetchAllQuizzesFromLesson(lessonId: _lesson.id),
+            fillInTheBlanksService.fetchAllQuizzesFromLesson(lessonId: _lesson.id),
           ]);
         } catch (e) {
           logger.e(e);
@@ -129,9 +137,16 @@ class EditLessonModel extends BaseViewModel {
   }
 
   void goToQuiz({required String id}) => navigator.goToEditQuiz(id);
+  void goToFillInTheBlanks({required String id}) => navigator.goToEditFillInTheBlanks(id);
 
   void deleteLesson() async{
     await lessonService.delete(id: id);
     navigator.pop();
+  }
+
+
+  void addFillInTheBlank() async{
+    await fillInTheBlanksService.create(version, id);
+    notifyListeners();
   }
 }

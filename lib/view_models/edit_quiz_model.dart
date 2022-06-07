@@ -1,5 +1,5 @@
 import 'package:code_learn/launch.dart';
-import 'package:code_learn/model/multiple_choice';
+import 'package:code_learn/model/multiple_choice.dart';
 import 'package:code_learn/services/quiz_service/quiz_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:objectid/objectid.dart';

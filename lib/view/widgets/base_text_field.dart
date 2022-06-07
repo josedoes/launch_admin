@@ -46,7 +46,7 @@ class BaseTextField extends StatelessWidget {
 
         decoration: baseTextFieldDecoration.copyWith(
           hintText: hintText,
-          hintStyle: baseStyle.copyWith(
+          hintStyle: poppins.copyWith(
             color: Colors.grey[700],
             fontSize: 12,
           ),

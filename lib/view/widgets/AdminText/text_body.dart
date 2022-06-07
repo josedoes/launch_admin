@@ -6,7 +6,7 @@ class TextBody extends StatelessWidget {
 
   final String content;
   final Color? color;
-  TextStyle get style => baseStyle.copyWith(
+  TextStyle get style => poppins.copyWith(
         color: color ?? white,
         fontSize: 14,
       );
@@ -30,7 +30,7 @@ class TextBoxTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       content,
-      style: baseStyle.copyWith(
+      style: poppins.copyWith(
         color: color ?? white,
         fontSize: 18,
         fontWeight: FontWeight.w600,

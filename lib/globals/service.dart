@@ -2,6 +2,7 @@ import 'package:code_learn/launch.dart';
 import 'package:code_learn/services/auth_service.dart';
 import 'package:code_learn/services/course_service/course_service.dart';
 import 'package:code_learn/services/discover_service/discover_service.dart';
+import 'package:code_learn/services/fill_in_the_blanks_service.dart';
 import 'package:code_learn/services/lesson_service/lesson_service.dart';
 import 'package:code_learn/services/local_storage_service.dart';
 import 'package:code_learn/services/module_service/module_service.dart';
@@ -38,6 +39,7 @@ Future<void> setUpLocator() async {
   register<VersionService>(VersionService());
   register<LessonService>(LessonService());
   register<QuizService>(QuizService());
+  register<FillInTheBlanksService>(FillInTheBlanksService());
 }
 
 void register<T extends Object>(T value) {

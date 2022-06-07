@@ -1,16 +1,7 @@
-// To parse this JSON data, do
-//
-//     final quiz = quizFromJson(jsonString);
-
-import 'dart:convert';
-
+import 'package:code_learn/model/work.dart';
 import 'package:equatable/equatable.dart';
 
-MultipleChoice quizFromJson(String str) => MultipleChoice.fromJson(json.decode(str));
-
-String quizToJson(MultipleChoice data) => json.encode(data.toJson());
-
-class MultipleChoice {
+class MultipleChoice extends RocketWork{
   MultipleChoice({
     required this.id,
     required this.lessonId,

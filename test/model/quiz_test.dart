@@ -1,4 +1,4 @@
-import 'package:code_learn/model/multiple_choice';
+import 'package:code_learn/model/multiple_choice.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 main() {

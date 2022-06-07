@@ -1,5 +1,5 @@
 import 'package:code_learn/launch.dart';
-import 'package:code_learn/model/multiple_choice';
+import 'package:code_learn/model/multiple_choice.dart';
 import 'package:code_learn/view/widgets/rocket_card.dart';
 import 'package:code_learn/view_models/quiz_view_model.dart';
 import 'package:flutter/material.dart';

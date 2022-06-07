@@ -1,5 +1,6 @@
 import 'package:code_learn/launch.dart';
 import 'package:code_learn/services/navigator_service/navigator_service.dart';
+import 'package:code_learn/view/widgets/rocket_scaffold.dart';
 import 'package:code_learn/view_models/app_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,21 +22,23 @@ class LaunchApp extends StatelessWidget {
     BuildContext context,
   ) {
     return Material(
-      child: MaterialApp.router(
-        routeInformationParser: locate<NavigatorService>().informationParser,
-        routerDelegate: locate<NavigatorService>().routerDelegate,
-        darkTheme: ThemeData(
-            iconTheme: const IconThemeData(
-          color: white,
-          size: 32,
-        )),
-        themeMode: ThemeMode.dark,
-        theme: ThemeData(
-            iconTheme: const IconThemeData(
-          color: white,
-          size: 32,
-        )),
-        title: 'Launch',
+      child: AppBackground(
+        child: MaterialApp.router(
+          routeInformationParser: locate<NavigatorService>().informationParser,
+          routerDelegate: locate<NavigatorService>().routerDelegate,
+          darkTheme: ThemeData(
+              iconTheme: const IconThemeData(
+            color: white,
+            size: 32,
+          )),
+          themeMode: ThemeMode.dark,
+          theme: ThemeData(
+              iconTheme: const IconThemeData(
+            color: white,
+            size: 32,
+          )),
+          title: 'Launch',
+        ),
       ),
     );
   }

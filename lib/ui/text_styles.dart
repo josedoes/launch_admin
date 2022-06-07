@@ -2,97 +2,97 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'colors.dart';
 
-final baseStyle = GoogleFonts.poppins(color: white);
+final poppins = GoogleFonts.poppins(color: white);
 final baseCodingStyle = GoogleFonts.robotoMono();
 
-final title1Style = baseStyle.copyWith(
+final title1Style = poppins.copyWith(
   fontSize: 40,
   color: white,
   fontWeight: semiBold,
 );
-final clickableTextMobileStyle = baseStyle.copyWith(
+final clickableTextMobileStyle = poppins.copyWith(
   fontSize: 18,
   color: primaryColor,
   fontWeight: semiBold,
 );
-final launchTitleStyle = baseStyle.copyWith(
+final launchTitleStyle = poppins.copyWith(
   fontSize: 30,
   color: primaryColor,
   fontWeight: regular,
 );
 
-final title2Style = baseStyle.copyWith(
+final title2Style = poppins.copyWith(
   fontSize: 24,
   color: white,
   fontWeight: regular,
 );
 
-final hintTextStyle = baseStyle.copyWith(
+final hintTextStyle = poppins.copyWith(
   fontSize: 16,
   color: hintColor,
   fontWeight: regular,
 );
 
-final inputTextStyle = baseStyle.copyWith(
+final inputTextStyle = poppins.copyWith(
   fontSize: 16,
   color: white,
   fontWeight: regular,
 );
 
-final button1TextStyle = baseStyle.copyWith(
+final button1TextStyle = poppins.copyWith(
   fontSize: 18,
   color: darkestBlue,
   fontWeight: semiBold,
 );
-final signUpTitleStyle = baseStyle.copyWith(
+final signUpTitleStyle = poppins.copyWith(
   fontSize: 36,
   color: white,
   fontWeight: semiBold,
 );
 
-final welcomeToDartStyleDesktop = baseStyle.copyWith(
+final welcomeToDartStyleDesktop = poppins.copyWith(
   color: white,
   fontSize: 40,
   fontWeight: semiBold,
 );
 
-final welcomeToDartDesktopStyle = baseStyle.copyWith(
+final welcomeToDartDesktopStyle = poppins.copyWith(
   color: rocketBlue,
   fontSize: 40,
   fontWeight: semiBold,
 );
-final cardContentTitleStyle = baseStyle.copyWith(
+final cardContentTitleStyle = poppins.copyWith(
   fontWeight: semiBold,
   fontSize: 18,
 );
-final cardContentTitleDesktopStyle = baseStyle.copyWith(
+final cardContentTitleDesktopStyle = poppins.copyWith(
   fontWeight: semiBold,
   fontSize: 27.2,
 );
-final cardContentSubtitleStyle = baseStyle.copyWith(
+final cardContentSubtitleStyle = poppins.copyWith(
   fontSize: 14,
   fontWeight: regular,
 );
-final cardContentSubtitleDesktopStyle = baseStyle.copyWith(
+final cardContentSubtitleDesktopStyle = poppins.copyWith(
   fontSize: 16.32,
   fontWeight: regular,
 );
-final welcomeToDartParagraphStyle = baseStyle.copyWith(
+final welcomeToDartParagraphStyle = poppins.copyWith(
   fontWeight: regular,
   fontSize: 18,
   color: white,
 );
-final welcomeToDartParagraphDesktopStyle = baseStyle.copyWith(
+final welcomeToDartParagraphDesktopStyle = poppins.copyWith(
   fontWeight: regular,
   fontSize: 24,
   color: white,
 );
-final chooseAPathTitleStyle = baseStyle.copyWith(
+final chooseAPathTitleStyle = poppins.copyWith(
   fontSize: 28,
   fontWeight: semiBold,
   color: white,
 );
-final chooseAPathTitleDesktopStyle = baseStyle.copyWith(
+final chooseAPathTitleDesktopStyle = poppins.copyWith(
   fontSize: 26,
   fontWeight: regular,
   color: white,
@@ -100,37 +100,37 @@ final chooseAPathTitleDesktopStyle = baseStyle.copyWith(
 
 const rocketCardBackgroundColor = Color(0xff3B3B5C);
 
-final smallBoldWhiteStyle = baseStyle.copyWith(
+final smallBoldWhiteStyle = poppins.copyWith(
   fontSize: 16,
   color: white,
   fontWeight: semiBold,
 );
-final smallWhiteStyle = baseStyle.copyWith(
+final smallWhiteStyle = poppins.copyWith(
   fontSize: 12,
   color: white,
   fontWeight: semiBold,
 );
-final getStartedStyle = baseStyle.copyWith(
+final getStartedStyle = poppins.copyWith(
   fontWeight: semiBold,
   fontSize: 18,
   color: rocketBlue,
 );
-final landingTitleStyle = baseStyle.copyWith(
+final landingTitleStyle = poppins.copyWith(
   fontWeight: semiBold,
   fontSize: 30,
   color: rocketBlue,
 );
-final semiBoldWhiteStyle = baseStyle.copyWith(
+final semiBoldWhiteStyle = poppins.copyWith(
   fontWeight: semiBold,
   fontSize: 20,
   color: white,
 );
-final regularWhiteStyle = baseStyle.copyWith(
+final regularWhiteStyle = poppins.copyWith(
   fontWeight: regular,
   fontSize: 20,
   color: white,
 );
-final quizTitleDesktop = baseStyle.copyWith(
+final quizTitleDesktop = poppins.copyWith(
   fontWeight: semiBold,
   fontSize: 26,
   color: white,
@@ -142,32 +142,42 @@ final codeTerminalStyle = baseCodingStyle.copyWith(
   fontSize: 20,
 );
 
-final quizAnswerNumber = baseStyle.copyWith(
+final quizAnswerNumber = poppins.copyWith(
   fontSize: 16,
   color: quizAnswerNumberColor,
 );
-final moduleTitleStyle = baseStyle.copyWith(
+final moduleTitleStyle = poppins.copyWith(
   fontSize: 16,
   color: darkestBlue,
   fontWeight: semiBold,
 );
-final discoverTitle = baseStyle.copyWith(
+final discoverTitle = poppins.copyWith(
   fontSize: 22,
   color: white,
   fontWeight: semiBold,
 );
 
-final errorExplainStyle= baseStyle.copyWith(
+final errorExplainStyle= poppins.copyWith(
   fontSize: 22,
   color: white,
   fontWeight: regular,
 );
-final regularGreenStyle= baseStyle.copyWith(
+final regularGreenStyle= poppins.copyWith(
   fontSize: 22,
   color: primaryColor,
   fontWeight: regular,
 );
 
+final quizTitleStyle = poppins.copyWith(
+  fontSize: 18,
+  fontWeight: semiBold,
+);
+
+final body = poppins.copyWith(
+  fontSize: 14,
+  color: white,
+  fontWeight: regular,
+);
 
 
 

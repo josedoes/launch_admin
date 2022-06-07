@@ -167,7 +167,7 @@ class CourseDisplay extends ViewModelWidget<HomeModel> {
           const Spacer(),
           Text(
             course.name,
-            style: baseStyle.copyWith(
+            style: poppins.copyWith(
               color: white,
               fontWeight: semiBold,
               fontSize: 28,

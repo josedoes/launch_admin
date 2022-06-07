@@ -1,5 +1,5 @@
 import 'package:code_learn/launch.dart';
-import 'package:code_learn/model/multiple_choice';
+import 'package:code_learn/model/multiple_choice.dart';
 import 'package:flutter/material.dart';
 
 class QuizViewModel extends ChangeNotifier {
@@ -28,7 +28,7 @@ class QuizViewModel extends ChangeNotifier {
   }
 
   void goToPage(int i) {
-    pageController.animateToPageEasy(i);
+    // pageController.animateToPageEasy(i);
   }
 
   void onContinue() async {

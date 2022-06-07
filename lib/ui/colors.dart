@@ -22,3 +22,11 @@ const selectionErrorRed = Color(0xffFF556B);
 const codeRed = Color(0xffFF556B);
 const codeString = Color(0xff32DE8A);
 const codeLetters = Color(0xffC6D2E3);
+
+//fill in
+const fillInGreen = Color(0xff06BE64);
+const fillInGreenShadow = Color(0xff089c54);
+const fillInRed = Color(0xfff64040);
+const fillInRedShadow = Color(0xffe12b2b);
+
+const actionBoxDividerColor = Color(0xff4C5393);

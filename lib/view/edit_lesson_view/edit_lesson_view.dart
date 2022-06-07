@@ -1,5 +1,6 @@
 import 'package:code_learn/launch.dart';
 import 'package:code_learn/model/lesson.dart';
+import 'package:code_learn/view/edit_fill_in_the_blank/edit_fill_in_the_blank.dart';
 import 'package:code_learn/view/widgets/AdminText/text_body.dart';
 import 'package:code_learn/view/widgets/base_button.dart';
 import 'package:code_learn/view/widgets/base_text_field.dart';
@@ -45,6 +46,7 @@ class EditLessonView extends StatelessWidget {
                   TextPageTitle('Edit Lesson'),
                   SizedBox(height: 40),
                   MangeQuizOnLesson(),
+                  ManageFillInTheBlanksOnLesson(),
                   SizedBox(height: 40),
                   EditLessonInfo(),
                   SizedBox(height: 20),
@@ -216,6 +218,40 @@ class MangeQuizOnLesson extends ViewModelWidget<EditLessonModel> {
                   child: ClickableBox(
                       title: quiz.name,
                       onPressed: () => model.goToQuiz(id: quiz.id)),
+                )
+            ],
+          ),
+        ),
+        const SizedBox(height: 20),
+      ],
+    );
+  }
+}
+
+class ManageFillInTheBlanksOnLesson extends ViewModelWidget<EditLessonModel> {
+  const ManageFillInTheBlanksOnLesson({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, model) {
+    return Column(
+      children: [
+        AddButton(
+            onPressed: model.addFillInTheBlank, title: 'Add add fill in the blanks'),
+        const SizedBox(height: 20),
+        SizedBox(
+          height: 250,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              for (final quiz in model.fillInTheBlanks)
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: ClickableBox(
+                    title: quiz.instruction,
+                    onPressed: () => model.goToFillInTheBlanks(
+                      id: quiz.id,
+                    ),
+                  ),
                 )
             ],
           ),

@@ -59,6 +59,7 @@ class NavigatorService {
           EditModuleLocation(),
           EditLessonLocation(),
           EditQuizLocation(),
+          EditFillInTheBlanksLocation(),
         ],
       ),
     );
@@ -98,10 +99,18 @@ class NavigatorService {
     routerDelegate.beamToNamed(path);
   }
 
+  void goToEditFillInTheBlanks(String id) {
+    final path = '/$editFillInTheBlanksPath/$id';
+    lowLevelLog('Navigating to FillInTheBlanks = $path');
+    routerDelegate.beamToNamed(path);
+  }
+
   void goToAuth() {
     final path = '/$authPath';
     lowLevelLog('Navigating to authPath = $path');
     routerDelegate.beamToNamed(path);
 
   }
+
+
 }

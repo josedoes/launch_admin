@@ -1,5 +1,3 @@
-import 'package:code_learn/ui/colors.dart';
-import 'package:code_learn/view/app_view/app_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -16,8 +14,8 @@ class RocketScaffold extends StatelessWidget {
     this.floatingActionButton,
     this.drawerScrimColor = Colors.transparent,
     this.floatingActionButtonLocation,
-    Key? key,
-  }) : super(key: key);
+    super.key
+  }) ;
 
   final bool insideScrollable;
   final String? version;
@@ -33,10 +31,19 @@ class RocketScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('${debugTag ?? body.runtimeType} Built with RocketScaffold');
 
     Widget child = Container(
-      color: backgroundColor ?? appBackgroundColor,
+      // color: backgroundColor ?? appBackgroundColor,
+      // decoration: const BoxDecoration(
+      //   gradient: LinearGradient(
+      //     begin: Alignment.topCenter,
+      //     end: Alignment(0.01, 1.8),
+      //     colors: [
+      //       Color(0xff161B4C),
+      //       Color(0xff3E4697),
+      //     ],
+      //   ),
+      // ),
       child: Scaffold(
         drawerScrimColor: drawerScrimColor,
         resizeToAvoidBottomInset: resizeToAvoidBottomInset,
@@ -47,18 +54,16 @@ class RocketScaffold extends StatelessWidget {
           preferredSize: kIsWeb ? const Size(0, 0) : const Size.fromHeight(0),
         ),
         endDrawer: endDrawer,
-        backgroundColor: backgroundColor ?? appBackgroundColor,
+        backgroundColor: Colors.transparent,
         onEndDrawerChanged: onEndDrawerChanged,
         body: SafeArea(
           child: Align(
             alignment: Alignment.topCenter,
-            child: FadeIn(
-              child: Container(
-                constraints: const BoxConstraints(
-                  maxWidth: 800,
-                ),
-                child: body,
+            child: Container(
+              constraints: const BoxConstraints(
+                maxWidth: 900,
               ),
+              child: body,
             ),
           ),
         ),
@@ -76,6 +81,37 @@ class RocketScaffold extends StatelessWidget {
       );
     }
 
+    final fadeIn = false;
+
+    if(fadeIn){
+      // child = FadeIn(child: child);
+    }
+
     return child;
+  }
+}
+
+class AppBackground extends StatelessWidget {
+  const AppBackground({required this.child, super.key,}) ;
+
+  final Widget child;
+
+  // Figma Flutter Gxenerator Rectangle289Widget - RECTANGLE
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      // color: backgroundColor ?? appBackgroundColor,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color.fromRGBO(21, 27, 75, 1),Color.fromRGBO(31, 41, 125, 1)]
+        ),
+      ),
+      child: child,
+    );
   }
 }
