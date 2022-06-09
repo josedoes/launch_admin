@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
-
 import '../ui/durations.dart';
 
-// ignore: camel_case_extensions
 extension xString on String {
   TextSpan toSpan() {
     return TextSpan(text: this);
   }
-
 
   double toDouble() =>
       num.tryParse(this)?.toDouble() ?? double.tryParse(this) ?? 0.0;
@@ -17,18 +14,19 @@ extension xString on String {
   bool isValidEmail() => validateEmail(this);
 
   bool isEncodedContent() => isEncodedString(this);
-  bool validateEmail(String? value) => RegExp(
-    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-  ).hasMatch(value ?? '');
 
-  Color? toColor(){
+  bool validateEmail(String? value) => RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+      ).hasMatch(value ?? '');
+
+  Color? toColor() {
     try {
       final hexString = this;
       final buffer = StringBuffer();
       if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');
       buffer.write(hexString.replaceFirst('#', ''));
       return Color(int.parse(buffer.toString(), radix: 16));
-    }catch(e){
+    } catch (e) {
       return null;
     }
   }
@@ -47,8 +45,8 @@ extension XNextPage on PageController {
 }
 
 bool validateEmail(String? value) => RegExp(
-  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-).hasMatch(value ?? '');
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    ).hasMatch(value ?? '');
 
 bool isEncodedString(String string) {
   if (string.length > 5) {
@@ -64,9 +62,8 @@ bool isEncodedString(String string) {
 }
 
 extension Xint on int {
-  toList() => List.generate(this -1, (index) => null);
+  toList() => List.generate(this - 1, (index) => null);
 }
-
 
 extension HexColor on Color {
   /// String is in the format "aabbcc" or "ffaabbcc" with an optional leading "#".

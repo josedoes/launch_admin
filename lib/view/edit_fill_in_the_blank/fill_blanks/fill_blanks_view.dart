@@ -35,7 +35,7 @@ class FillInBlankView extends StatelessWidget {
                   const SizedBox(height: 38),
                   PaddingCommonMobile(
                     child: Text(
-                      'Fill in the blanks with the correct answers:',
+                      model.fillInTheBlanks.instruction,
                       style: quizTitleStyle,
                     ),
                   ),

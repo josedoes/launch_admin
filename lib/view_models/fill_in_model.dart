@@ -8,7 +8,6 @@ import '../model/fill_in_the_blanks.dart';
 class FillInModel extends BaseViewModel {
   FillInModel({required this.fillInTheBlanks, required this.onNext});
 
-
   final FillInTheBlanks fillInTheBlanks;
   final Function() onNext;
 
@@ -17,14 +16,16 @@ class FillInModel extends BaseViewModel {
   bool checked = false;
   SelectedElement? selectedItem;
 
-
-
   List<CodeBlanksElement> allBlanks() => fillInTheBlanks.codeBlanksElements
-      .where((element) => element.correctAnswer != null)
+      .where((element) => element.isBlank())
       .toList();
 
-  bool _allBlanksHaveBeenSelected() =>
-      allBlanks().length == selectedItems.length;
+  bool _allBlanksHaveBeenSelected() {
+    final blankLength = allBlanks().length;
+    final selectedItemsLength = selectedItems.length;
+    final allHaveBeenSelected = blankLength == selectedItemsLength;
+    return allHaveBeenSelected;
+  }
 
   bool allAreCorrect() {
     bool allAreCorrect = true;
@@ -80,24 +81,35 @@ class FillInModel extends BaseViewModel {
     notifyListeners();
   }
 
-  List<PossibleBlankFiller> get possibleElements => fillInTheBlanks.possibleBlankFillers;
+  List<PossibleBlankFiller> get possibleElements =>
+      fillInTheBlanks.possibleBlankFillers;
+
+  bool canAddItem(SelectedElement selected) {
+    if (_allBlanksHaveBeenSelected()) {
+      return false;
+    } else {
+      final doesntExistAlready =
+          selectedItems.indexWhere((element) => element.key == selected.key) ==
+              -1;
+      return doesntExistAlready;
+    }
+  }
 
   void addSelectedItem() {
     final selected = selectedItem;
     if (selected != null) {
-      selectedItems.add(SelectedElement(
-        element: selected.element,
-        key: selected.key,
-        orderItWasSelected: selectedItems.length,
-      ));
+      if (canAddItem(selected)) {
+        selectedItems.add(SelectedElement(
+          element: selected.element,
+          key: selected.key,
+          orderItWasSelected: selectedItems.length,
+        ));
+      } else {
+        selectedItem = null;
+      }
       notifyListeners();
     }
   }
-
-  // void removeSelectedItem(FillInSelectionElement element) {
-  //   selectedItems.removeWhere((element) => element.element == element.element);
-  //   notifyListeners();
-  // }
 
   void removeLastItem() {
     checked = false;
@@ -110,11 +122,11 @@ class FillInModel extends BaseViewModel {
   void selectAnElement(SelectedElement p1) {
     if (checked) return;
     selectedItem = p1;
-    notifyListeners();
+    addSelectedItem();
   }
 
   bool hintHasBeenSelected(PossibleBlankFiller hint) =>
-      selectedItems.indexWhere((a) => a.element == hint.element) != -1 ||
+      selectedItems.indexWhere((a) => a.key == hint.id) != -1 ||
       selectedItem?.element == hint.element;
 
   void checkAnswers() {
@@ -160,7 +172,8 @@ class FillInModel extends BaseViewModel {
     return false;
   }
 
-  Color? getOutlineColor(SelectedElement selectedItem, CodeBlanksElement element) {
+  Color? getOutlineColor(
+      SelectedElement selectedItem, CodeBlanksElement element) {
     if (checked) {
       if (selectedItemIsCorrect(selectedItem, element)) {
         return fillInGreen;
@@ -172,8 +185,6 @@ class FillInModel extends BaseViewModel {
     }
   }
 }
-
-
 
 class SelectedElement {
   SelectedElement({

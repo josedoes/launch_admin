@@ -179,7 +179,7 @@ class CodeBlanksElement {
       };
 
   bool isText() => type == 'text';
-  bool isBlank() => type == 'text';
+  bool isBlank() => type == 'blank';
 }
 
 class PossibleBlankFiller {
