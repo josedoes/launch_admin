@@ -40,7 +40,7 @@ class EditFillInTheBlankView extends StatelessWidget {
           return const ErrorView();
         }
 
-        Widget editView =  RocketScaffold(
+        Widget editView = RocketScaffold(
           body: PaddingCommonMobile(
             child: ListView(
               cacheExtent: 99999,
@@ -71,8 +71,10 @@ class EditFillInTheBlankView extends StatelessWidget {
             const SizedBox(height: 20),
             BaseButton(title: 'toggle test view', onPressed: model.toggleState),
             const SizedBox(height: 20),
-            if(model.showTest)
-              Expanded(child: FillInBlankView(onNext: (){}, fillInTheBlank: model.fillInTheBlanks!))
+            if (model.showTest)
+              Expanded(
+                  child: FillInBlankView(
+                      onNext: () {}, fillInTheBlank: model.fillInTheBlanks!))
             else
               Expanded(child: editView)
           ],
@@ -196,48 +198,66 @@ class CodeBlanksElementEdit extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              BaseTextField(
-                initialValue: codeBlanksElement.type,
-                label: const TextBody('type'),
-                // onChanged: (a) => onEdit(codeBlanksElement.copyWith(type: a)),
+              DropdownButtonFormField<String>(
+                dropdownColor: policeBlue,
+                value: codeBlanksElement.type,
+                style: const TextBody('').style,
+                items: [
+                  ...['text', 'blank'].map((a) {
+                    return DropdownMenuItem(
+                      value: a,
+                      child: Text(a),
+                    );
+                  }).toList(),
+                ],
+                onChanged: (a) {
+                  onEdit(codeBlanksElement.copyWith(type: a));
+                },
               ),
               const SizedBox(height: 24),
-              BaseTextField(
-                initialValue: codeBlanksElement.color,
-                label: TextBody('color'),
-                // onChanged: (a) => onEdit(
-                //   codeBlanksElement.copyWith(color: a),
-                // ),
-              ),
-              const SizedBox(height: 24),
-              BaseTextField(
-                initialValue: codeBlanksElement.content,
-                label: TextBody('content'),
-                onChanged: (a) =>
-                    onEdit(codeBlanksElement.copyWith(content: a)),
-              ),
-              const SizedBox(height: 24),
+
+              if (codeBlanksElement.isText())
+                BaseTextField(
+                  initialValue: codeBlanksElement.color,
+                  label: TextBody('color'),
+                  onChanged: (a) => onEdit(
+                    codeBlanksElement.copyWith(color: a),
+                  ),
+                ),
+              if (codeBlanksElement.isText()) const SizedBox(height: 24),
+
+              if (codeBlanksElement.isText())
+                BaseTextField(
+                  initialValue: codeBlanksElement.content,
+                  label: TextBody('content'),
+                  onChanged: (a) =>
+                      onEdit(codeBlanksElement.copyWith(content: a)),
+                ),
+              if (codeBlanksElement.isText()) const SizedBox(height: 24),
+
               BaseTextField(
                 initialValue: codeBlanksElement.index.toString(),
                 label: TextBody('index'),
-                // onChanged: (a) =>
-                //     onEdit(codeBlanksElement.copyWith(index: a.toInt())),
+                onChanged: (a) =>
+                    onEdit(codeBlanksElement.copyWith(index: a.toInt())),
                 inputFormatters: intFormatter,
               ),
-              const SizedBox(height: 24),
-              BaseTextField(
-                initialValue: codeBlanksElement.correctAnswer,
-                label: TextBody('correctAnswer'),
-                // onChanged: (a) =>
-                //     onEdit(codeBlanksElement.copyWith(correctAnswer: a)),
-              ),
-              const SizedBox(height: 24),
-              BaseTextField(
-                initialValue: codeBlanksElement.id,
-                label: TextBody('id'),
-                // onChanged: (a) => onEdit(codeBlanksElement.copyWith(id: a)),
-              ),
-              const SizedBox(height: 24),
+
+              if (!codeBlanksElement.isText()) const SizedBox(height: 24),
+              if (!codeBlanksElement.isText())
+                BaseTextField(
+                  initialValue: codeBlanksElement.correctAnswer,
+                  label: TextBody('correctAnswer'),
+                  onChanged: (a) =>
+                      onEdit(codeBlanksElement.copyWith(correctAnswer: a)),
+                ),
+              // const SizedBox(height: 24),
+              // BaseTextField(
+              //   initialValue: codeBlanksElement.id,
+              //   label: TextBody('id'),
+              //   onChanged: (a) => onEdit(codeBlanksElement.copyWith(id: a)),
+              // ),
+               const SizedBox(height: 24),
               BaseButton(
                   title: 'Delete', onPressed: onDelete, color: Colors.red),
               const SizedBox(height: 24),
